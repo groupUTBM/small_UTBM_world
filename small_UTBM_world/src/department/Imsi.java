@@ -8,7 +8,7 @@ package department;
 			this.setname("ing¨¦nierie et management des syst¨¨mes industriels");
 
 			}
-		public String get_discription(){
+		public String get_description(){
 			return "Come here,and i will lead you to do your job";
 		}
 		public  int attack(int numunite, String type)

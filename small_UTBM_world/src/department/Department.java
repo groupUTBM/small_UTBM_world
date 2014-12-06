@@ -5,13 +5,13 @@ public abstract class Department {
 		
 		protected int numunite;
 		protected String name;
-		protected String discription;
+		protected String description;
 		
 		public Department(){
 			
 			numunite =0;
 			name = ""; 
-			discription="";
+			description="";
 		}
 			
 	 public String get_name(){
@@ -24,7 +24,7 @@ public abstract class Department {
 			
 			return numunite;
 		}
-		public abstract String get_discription();
+		public abstract String get_description();
 	
 		
 				

@@ -7,7 +7,7 @@ public class Info extends Department{
 		this.setname("Genie Informatique");
 
 		}
-	public String get_discription(){
+	public String get_description(){
 		return "yeah,we are geek,we are strong in computer science...if the room is computer classroom,you will be stronger";
 	}
 	public  int attack(int numunite, String type)

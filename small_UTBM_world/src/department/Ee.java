@@ -8,7 +8,7 @@ package department;
 			this.setname("ENERGY AND ENVIRONEMENT");
 
 			}
-		public String get_discription(){
+		public String get_description(){
 			return "Hello young man,you should protect our environement...";
 		}
 		public  int attack(int numunite, String type)
