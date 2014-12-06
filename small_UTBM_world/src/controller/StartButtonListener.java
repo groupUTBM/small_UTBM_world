@@ -15,7 +15,7 @@ public class StartButtonListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		globalPan.showGamePan();
+		globalPan.showChooseNbPan();
 	}
 
 	@Override
