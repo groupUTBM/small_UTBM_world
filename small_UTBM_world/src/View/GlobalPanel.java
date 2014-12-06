@@ -8,16 +8,25 @@ import javax.swing.JPanel;
 public class GlobalPanel extends JPanel {
 	private GamePanel gamePan = new GamePanel();
 	private JPanel testPan = new JPanel();
-	private WelcomePanel welcomePan = new WelcomePanel(this);
+	private WelcomePanel welcomePan;
+	private ChooseNbPlayer cnbPan = new ChooseNbPlayer(this);
+	private EnterNamePlayer enpPan;
 	
 	private CardLayout cl = new CardLayout();
 	
 	public GlobalPanel(){
+		welcomePan=new WelcomePanel(this);
+		enpPan = new EnterNamePlayer(this);
+		
 		setLayout(cl);
 		testPan.setBackground(Color.pink);
 		add(gamePan, "gamepanel");
 		add(testPan, "testpanel");
 		add(welcomePan, "welcomePan");
+		add(cnbPan,"chooseNbPan");
+		add(enpPan,"enterNamePan");
+		
+		
 		cl.show(this, "welcomePan");
 		
 	}
@@ -28,5 +37,11 @@ public class GlobalPanel extends JPanel {
 	
 	public void showGamePan(){
 		cl.show(this, "gamepanel");
+	}
+	public void showChooseNbPan(){
+		cl.show(this, "chooseNbPan");
+	}
+	public void showEnterNamePan(){
+		cl.show(this, "enterNamePan");
 	}
 }
