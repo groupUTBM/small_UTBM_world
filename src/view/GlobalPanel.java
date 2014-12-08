@@ -2,10 +2,12 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import model.Game;
+import model.Player;
 
 public class GlobalPanel extends JPanel {
 	private GamePanel gamePan;
@@ -36,12 +38,14 @@ public class GlobalPanel extends JPanel {
 		return gamePan;
 	}
 	
-	public void showGamePan(){
-		gamePan = new GamePanel();
+	public void showGamePan(ArrayList<Player> players){
+		gamePan = new GamePanel(players);
 		add(gamePan,"gamePan");
 		cl.show(this, "gamePan");
 	}
 	public void showChooseNbPan(){
+		cnbPan = new ChooseNbPlayer(this);
+		add(cnbPan,"chooseNbPan");
 		cl.show(this, "chooseNbPan");
 	}
 	public void showEnterNamePan(){

@@ -2,34 +2,24 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
+import model.Player;
 import view.GlobalPanel;
 
 
-//Pour enter l'ecran de saisir les noms de joueurs
-public class NextButtonListener implements MouseListener {
+//Pour enter l'ecran de joue
+public class GameButtonListener implements MouseListener{
 	
-	private GlobalPanel gp;
+private GlobalPanel gp;
 	
-	public NextButtonListener(GlobalPanel gp) {
+	public GameButtonListener(GlobalPanel gp) {
 		this.gp=gp;
 	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		gp.showEnterNamePan();
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		gp.showGamePan(new ArrayList<Player>());
 		
 	}
 
@@ -41,6 +31,18 @@ public class NextButtonListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

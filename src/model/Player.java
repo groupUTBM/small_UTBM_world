@@ -8,7 +8,7 @@ import department.Utseus;
 
 
 public class Player  {
-   private String nom;
+   private String name;
    private int note=0;
    private Department depa;
    private ArrayList<Room> rooms;
@@ -22,7 +22,7 @@ public class Player  {
 	  depa=d;
    }
    public Player(String s){
-	   nom=s;
+	   name=s;
 	   depa=new Utseus();
 	   rooms= new ArrayList<Room>();
 	   pawnsInHand = new ArrayList<Pawn>();
@@ -68,5 +68,9 @@ public class Player  {
    public void setMec(MouseEffectComponent mouseEffectComponent){
 	   mec=mouseEffectComponent;
 	   mec.updateNb(nbPawnsInHand);
+   }
+   
+   public String getName(){
+	   return name;
    }
 }
