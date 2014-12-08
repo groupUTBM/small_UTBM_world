@@ -1,22 +1,22 @@
 package department;
 
 
-	public class EE extends department{
+	public class Ee extends Department{
 		 
-		public EE(){
+		public Ee(){
 			super();
 			this.setname("ENERGY AND ENVIRONEMENT");
 
 			}
-		public String get_discription(){
+		public String get_description(){
 			return "Hello young man,you should protect our environement...";
 		}
-		public  int attack(int numunit¨¦, String type)
+		public  int attack(int numunite, String type)
 		{
 			if(type=="lawn")
-				return numunit¨¦+1;
+				return numunite+1;
 			
-			else return numunit¨¦;
+			else return numunite;
 			
 		}
 }

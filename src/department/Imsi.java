@@ -1,22 +1,22 @@
 package department;
 
 
-	public class IMSI extends department{
+	public class Imsi extends Department{
 		 
-		public IMSI(){
+		public Imsi(){
 			super();
 			this.setname("ing¨¦nierie et management des syst¨¨mes industriels");
 
 			}
-		public String get_discription(){
+		public String get_description(){
 			return "Come here,and i will lead you to do your job";
 		}
-		public  int attack(int numunit¨¦, String type)
+		public  int attack(int numunite, String type)
 		{
 			if(type=="machine")
-				return numunit¨¦+1;
+				return numunite+1;
 			
-			else return numunit¨¦;
+			else return numunite;
 			
 		}
 }
