@@ -42,8 +42,6 @@ public class GlobalPanel extends JPanel {
 		cl.show(this, "gamePan");
 	}
 	public void showChooseNbPan(){
-		cnbPan = new ChooseNbPlayer(this);
-		add(cnbPan,"chooseNbPan");
 		cl.show(this, "chooseNbPan");
 	}
 	public void showEnterNamePan(){
