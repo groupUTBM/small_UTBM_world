@@ -2,7 +2,9 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
+import model.Player;
 import view.GlobalPanel;
 
 
@@ -17,7 +19,7 @@ private GlobalPanel gp;
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		gp.showGamePan();
+		gp.showGamePan(new ArrayList<Player>());
 		
 	}
 
