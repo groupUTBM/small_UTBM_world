@@ -10,7 +10,6 @@ import java.awt.FlowLayout;
 
 
 
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,8 +18,7 @@ import javax.swing.JTextArea;
 //import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
-import controller.GameButtonListener;
-import controller.StartButtonListener;
+import controller.NextButtonListener;
 
 public class EnterNamePlayer extends JPanel {
 	private JLabel title = new JLabel();
@@ -28,13 +26,10 @@ public class EnterNamePlayer extends JPanel {
 	private JButton valid = new JButton("+");
 	private JButton start = new JButton("Commencer");
 	private JButton back = new JButton("Retourner");
-	private GameButtonListener gbl;
-	private StartButtonListener sbl;
 
 	
 	public EnterNamePlayer(GlobalPanel gp){
-		gbl = new GameButtonListener(gp);
-		sbl = new StartButtonListener(gp);
+		
 		
 		setLayout(new FlowLayout(FlowLayout.CENTER,600,70));
 		
@@ -62,7 +57,5 @@ public class EnterNamePlayer extends JPanel {
 		add(jpTextField);
 		add(jpButton);
 		
-		start.addMouseListener(gbl);
-		back.addMouseListener(sbl);
 	}
 }

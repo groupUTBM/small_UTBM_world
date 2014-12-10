@@ -7,13 +7,11 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Game;
-import model.Player;
 import controller.GameController;
 import controller.GamePanelListener;
 
@@ -34,11 +32,11 @@ public class GamePanel extends JPanel {
 	
 	private GamePanelListener gpl;
 	
-	public GamePanel(ArrayList<Player> players){
+	public GamePanel(){
 		mec = new MouseEffectComponent();
 		gpl = new GamePanelListener(mec);
 		mapPnl = new MapPanel(gc);
-		gc = new GameController(new Game(this, players));
+		gc = new GameController(new Game(this));
 		
 		mapPnl.addRoomListeners(gc);
 		

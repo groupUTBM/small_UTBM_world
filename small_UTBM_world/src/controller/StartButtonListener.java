@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 import view.GlobalPanel;
 import model.Game;
 
-//Pour enter l'ecran de choisir le nombre de joueur
 public class StartButtonListener implements MouseListener {
 
 	private GlobalPanel globalPan;
@@ -16,7 +15,7 @@ public class StartButtonListener implements MouseListener {
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		globalPan.showChooseNbPan();
+		globalPan.showGamePan();
 	}
 
 	@Override
