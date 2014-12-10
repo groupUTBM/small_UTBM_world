@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,12 +24,14 @@ public class ChooseNbPlayer extends JPanel{
 	
 	private NextButtonListener nbl;
 	
+	private ButtonGroup groupe = new ButtonGroup();
+	
 	public ChooseNbPlayer(GlobalPanel gp){
 		
 		nbl=new NextButtonListener(gp);
 		
 		setLayout(new FlowLayout(FlowLayout.CENTER,600,70));
-		title.setText("CHOISIR LE NOMBRE DE JOUEUR!");
+		title.setText("CHOISISSEZ LE NOMBRE DE JOUEUR!");
 		title.setForeground(Color.white);
 		title.setFont(new java.awt.Font("Dialog", 1, 20));
 		title.getText();
@@ -46,7 +49,6 @@ public class ChooseNbPlayer extends JPanel{
 		jpRadioButtons.add(nb6 = new JRadioButton("  6 Joueurs  "));
 		//add(jpRadioButtons, BorderLayout.CENTER);
 		
-		ButtonGroup groupe = new ButtonGroup();
 		groupe.add(nb2);
 		groupe.add(nb3);
 		groupe.add(nb4);
@@ -65,6 +67,7 @@ public class ChooseNbPlayer extends JPanel{
 		nb5.setForeground(Color.white);
 		nb6.setForeground(Color.white);
 		
+		
 		nb2.setSelected(true);
 		
 		suivant.setPreferredSize(new Dimension(150,40));
@@ -78,6 +81,20 @@ public class ChooseNbPlayer extends JPanel{
 		suivant.addMouseListener(nbl);
 		
 		   
+	}
+	public int getNbPlayers(){
+		if(nb2.isSelected() )
+			return 2;
+		else if ( nb3.isSelected() )
+			return 3;
+		else if ( nb4.isSelected() )
+			return 4;
+		else if ( nb5.isSelected() )
+			return 5;
+		else if ( nb6.isSelected() )
+			return 6;
+		
+		return 2;
 	}
 
 }

@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 import view.GlobalPanel;
 
+
+//Pour enter l'ecran de saisir les noms de joueurs
 public class NextButtonListener implements MouseListener {
 	
 	private GlobalPanel gp;
@@ -15,7 +17,7 @@ public class NextButtonListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		gp.showEnterNamePan();
+		gp.showEnterNamePan(gp.getCnbPan().getNbPlayers());
 		
 	}
 
