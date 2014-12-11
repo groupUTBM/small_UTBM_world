@@ -22,7 +22,7 @@ public class MapPanel extends JPanel {
 	
 	public MapPanel(GameController g){
 		this.gc=g;
-//		this.setPreferredSize(new Dimension(500,400));
+		this.setMinimumSize(new Dimension(600,600));
 		this.setBackground(Color.red);
 		this.setLayout(gl);
 		gl.setHgap(2);

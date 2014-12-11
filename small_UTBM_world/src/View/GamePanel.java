@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -24,6 +25,7 @@ public class GamePanel extends JPanel {
 	private PlayerListPanel playerLstPnl = new PlayerListPanel();
 	private JPanel containerPan = new JPanel();
 	private MouseEffectComponent mec;
+	private JButton nextTurnBtn = new JButton("nextturn");
 	
 	private GridBagConstraints gbc = new GridBagConstraints();
 	private GridBagLayout gbl= new GridBagLayout();
@@ -46,17 +48,22 @@ public class GamePanel extends JPanel {
 		setBackground(Color.BLACK);
 		containerPan.setLayout(gbl);
 		setLayout(cl);
+		nextTurnBtn.setMaximumSize(new Dimension(100,200));
+		playerLstPnl.setMinimumSize(new Dimension(200, 500));
 		
-		gbc.weightx = 1;
-		gbc.gridx=0;
-		gbc.ipady = 600;
-		gbc.ipadx = 600;
-		containerPan.add(mapPnl,gbc);
-		gbc.gridx=1;
+		gbc.fill = GridBagConstraints.BOTH;
 		gbc.weightx = 0;
-		gbc.ipadx = 200;
-		gbc.ipady = 400;
+		gbc.gridx=0;
+		gbc.gridheight=2;
+		containerPan.add(mapPnl,gbc);
+		gbc.gridheight  = 1;
+		gbc.gridx=GridBagConstraints.RELATIVE;
+		gbc.weighty=1.0;
+		gbc.weightx=1.0;
 		containerPan.add(playerLstPnl,gbc);
+		gbc.gridx = 1;
+		gbc.gridy = GridBagConstraints.RELATIVE;
+		containerPan.add(nextTurnBtn,gbc);
 		
 		add(containerPan,"contPan");
 		
@@ -64,7 +71,6 @@ public class GamePanel extends JPanel {
 		add(mec, 0);
 		mec.setVisible(true);
 		containerPan.setVisible(true);
-//		cl.show(this, "mec");
 	}
 	
 	public MapPanel getMapPanel(){
