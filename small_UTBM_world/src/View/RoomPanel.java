@@ -24,7 +24,7 @@ public class RoomPanel extends JPanel {
 		this.gc=g;
 		
 		setPreferredSize(new Dimension(60,60));
-		setBackground(Color.blue);
+		setBackground(Color.black);
 		posX = pX;
 		posY = pY;
 		setVisible(true);
@@ -42,11 +42,11 @@ public class RoomPanel extends JPanel {
 	}
 	public void mouseOnTop(){
 		if(!selected)
-		setBackground(Color.white);
+		setBackground(Color.GRAY);
 	}
 	public void mouseExited(){
 		if(!selected)
-		setBackground(Color.blue);
+		setBackground(Color.black);
 	}
 	public void mouseClicked(){
 		if(!selected){

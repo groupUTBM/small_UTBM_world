@@ -17,7 +17,7 @@ public class MouseEffectComponent extends JComponent{
 	
 	@Override
 	public void paintComponent(Graphics g){
-		g.setColor(Color.BLACK);
+		g.setColor(Color.white);
 		g.drawString(Integer.toString(nbPawnInHand), pX, pY);
 	}
 
