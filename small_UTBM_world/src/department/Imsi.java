@@ -1,5 +1,6 @@
 package department;
-
+import model.RoomType;
+import model.Room;
 
 	public class Imsi extends Department{
 		 
@@ -11,12 +12,13 @@ package department;
 		public String get_description(){
 			return "Come here,and i will lead you to do your job";
 		}
-		public  int attack(int numunite, String type)
+		 public  int attack(int numunite, RoomType r)
 		{
-			if(type=="machine")
-				return numunite+1;
-			
-			else return numunite;
+			 int n;
+		    	if(RoomType.MECANIQUECLASS!= null)
+		    		n=2*numunite;
+		    	else n=1*numunite;
+		    	return n;
 			
 		}
 }

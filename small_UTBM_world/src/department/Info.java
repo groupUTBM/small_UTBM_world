@@ -1,5 +1,6 @@
 package department;
-
+import model.RoomType;
+import model.Room;
 public class Info extends Department{
  
 	public Info(){
@@ -10,12 +11,13 @@ public class Info extends Department{
 	public String get_description(){
 		return "yeah,we are geek,we are strong in computer science...if the room is computer classroom,you will be stronger";
 	}
-	public  int attack(int numunite, String type)
+	 public  int attack(int numunite, RoomType r)
 	{
-		if(type=="computer classroom")
-			return numunite+1;
-		
-		else return numunite;
+		 int n;
+	    	if(RoomType.COMPUTERROOM!= null)
+	    		n=2*numunite;
+	    	else n=1*numunite;
+	    	return n;
 		
 	}
 	

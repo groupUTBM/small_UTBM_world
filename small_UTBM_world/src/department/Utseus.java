@@ -1,5 +1,6 @@
 package department;
-
+import model.RoomType;
+import model.Room;
 public class Utseus extends Department{
 	 
 	public Utseus(){
@@ -10,12 +11,13 @@ public class Utseus extends Department{
 	public String get_description(){
 		return "Enegineer?No problem.Speak chinese,english,french?No problem.";
 	}
-	public  int attack(int numunite, String type)
+	 public  int attack(int numunite, RoomType r)
 	{
-		if(type=="chinese class")
-			return numunite+2;
-		
-		else return numunite;
+		 int n;
+	    	if(RoomType.CHINESECLASS!= null)
+	    		n=2*numunite;
+	    	else n=1*numunite;
+	    	return n;
 		
 	}
 }

@@ -1,5 +1,6 @@
 package department;
-
+import model.RoomType;
+import model.Room;
 public class Edim extends Department{
 	 
 	public Edim(){
@@ -8,14 +9,15 @@ public class Edim extends Department{
 
 		}
 	public String get_description(){
-		return " ";
+		return "Ergonomie, Design et Ing¨¦nierie M¨¦canique ";
 	}
-	public  int attack(int numunite, String type)
+	public  int attack(int numunite, RoomType r)
 	{
-		if(type==" ")
-			return numunite+1;
-		
-		else return numunite;
+		int n;
+    	if(RoomType.MECANIQUECLASS!= null)
+    		n=2*numunite;
+    	else n=1*numunite;
+    	return n;
 		
 	}
 }

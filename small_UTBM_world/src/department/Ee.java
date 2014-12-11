@@ -1,5 +1,6 @@
 package department;
-
+import model.RoomType;
+import model.Room;
 
 	public class Ee extends Department{
 		 
@@ -11,12 +12,12 @@ package department;
 		public String get_description(){
 			return "Hello young man,you should protect our environement...";
 		}
-		public  int attack(int numunite, String type)
-		{
-			if(type=="lawn")
-				return numunite+1;
-			
-			else return numunite;
+		 public  int attack(int numunite, RoomType r)		{
+			 int n;
+		    	if(RoomType.PAWN!= null)
+		    		n=2*numunite;
+		    	else n=1*numunite;
+		    	return n;
 			
 		}
 }

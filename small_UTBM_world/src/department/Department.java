@@ -1,5 +1,6 @@
 package department;
-
+import model.RoomType;
+import model.Room;
 public abstract class Department {
 
 		
@@ -28,7 +29,7 @@ public abstract class Department {
 	
 		
 				
-		public abstract int attack(int numunite, String type);
+		abstract public  int attack(int numunite, RoomType r);
 		public int calculbonus(){
 			int bonus;
 			bonus=this.nbPawn*10;
