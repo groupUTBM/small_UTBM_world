@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -25,7 +27,7 @@ public class GamePanel extends JPanel {
 	private PlayerListPanel playerLstPnl = new PlayerListPanel();
 	private JPanel containerPan = new JPanel();
 	private MouseEffectComponent mec;
-	private JButton nextTurnBtn = new JButton("nextturn");
+	private JButton nextTurnBtn = new JButton("next Turn");
 	
 	private GridBagConstraints gbc = new GridBagConstraints();
 	private GridBagLayout gbl= new GridBagLayout();
@@ -64,6 +66,15 @@ public class GamePanel extends JPanel {
 		gbc.gridx = 1;
 		gbc.gridy = GridBagConstraints.RELATIVE;
 		containerPan.add(nextTurnBtn,gbc);
+		
+		nextTurnBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gc.getGame().nextTurn();
+				
+			}
+		});
 		
 		add(containerPan,"contPan");
 		

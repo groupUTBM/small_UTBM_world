@@ -17,6 +17,7 @@ public class Player  {
    private int nbPawnsInHand=0;
    private int i;
    private MouseEffectComponent mec;
+   private Color color=new Color(0,0,0);
    
    public void setdepartment(Department d){
 	  depa=d;
@@ -68,9 +69,13 @@ public class Player  {
    public void setMec(MouseEffectComponent mouseEffectComponent){
 	   mec=mouseEffectComponent;
 	   mec.updateNb(nbPawnsInHand);
+	   mec.setColor(color);
    }
    
    public String getName(){
 	   return name;
+   }
+   public void setColor(Color c){
+	   color=c;
    }
 }

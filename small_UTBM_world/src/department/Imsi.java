@@ -15,7 +15,7 @@ import model.Room;
 		 public  int attack(int numunite, RoomType r)
 		{
 			 int n;
-		    	if(r==RoomType.MECANIQUECLASS)
+		    	if(r==RoomType.MECANICCLASS)
 		    		n=2*numunite;
 		    	else n=1*numunite;
 		    	return n;

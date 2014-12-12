@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JComponent;
@@ -14,10 +15,12 @@ public class MouseEffectComponent extends JComponent{
 	
 	private int pX,pY;
 	private int nbPawnInHand = 0;
+	private Color color = new Color(0,0,0);
 	
 	@Override
 	public void paintComponent(Graphics g){
-		g.setColor(Color.white);
+		g.setColor(color);
+		g.setFont(new Font("Dialog",0,20));
 		g.drawString(Integer.toString(nbPawnInHand), pX, pY);
 	}
 
@@ -28,6 +31,9 @@ public class MouseEffectComponent extends JComponent{
 	public void updateNb(int n){
 		nbPawnInHand=n;
 		
+	}
+	public void setColor(Color c){
+		color=c;
 	}
 	
 }

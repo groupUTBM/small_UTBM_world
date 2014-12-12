@@ -14,7 +14,7 @@ public class Edim extends Department{
 	public  int attack(int numunite, RoomType r)
 	{
 		int n;
-    	if(r==RoomType.MECANIQUECLASS)
+    	if(r == RoomType.BAR)
     		n=2*numunite;
     	else n=1*numunite;
     	return n;
