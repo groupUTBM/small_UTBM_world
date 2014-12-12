@@ -24,7 +24,7 @@ public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 405461811821501769L;
 	private MapPanel mapPnl;
-	private PlayerListPanel playerLstPnl = new PlayerListPanel();
+	private PlayerListPanel playerLstPnl;
 	private JPanel containerPan = new JPanel();
 	private MouseEffectComponent mec;
 	private JButton nextTurnBtn = new JButton("next Turn");
@@ -45,6 +45,7 @@ public class GamePanel extends JPanel {
 		gc = new GameController(new Game(this,players));
 		
 		mapPnl.addRoomListeners(gc);
+		playerLstPnl = new PlayerListPanel(players);
 		
 		setPreferredSize(new Dimension(800,600));
 		setBackground(Color.BLACK);
