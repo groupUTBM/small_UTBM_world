@@ -9,12 +9,12 @@ public class professor extends pouvoir{
 	    }
 	    public int bonusattack(RoomType r){
 	    int n = 0;
-	    	if(RoomType.CLASSROOM != null)
+	    	if(r==RoomType.CLASSROOM)
 	    		n=3;
 	    		
-	    	if(RoomType.TPROOM != null)
+	    	if(r==RoomType.TPROOM)
 	    		n=2;
-	    	else if(RoomType.TDROOM!=null)
+	    	else if(r==RoomType.TDROOM)
 	    		n=2;
 			return n;
 			
@@ -23,26 +23,26 @@ public class professor extends pouvoir{
 	    	}
 		public   int bonusdefense(RoomType r)
 		{int n;
-		if(RoomType.COMPUTERROOM != null)
+		if(r==RoomType.COMPUTERROOM)
 			n=2;
 		else n=1;
 		return n;
 		}
 		public   int peoplecarry(RoomType r)
 		{int n;
-		if(RoomType.COMPUTERROOM != null)
+		if(r==RoomType.COMPUTERROOM)
 			n=4;
 		else n=2;
 		return n;
 	}
 		public int gainbonus(RoomType r)    //chaque tour
 		{int n = 0;
-    	if(RoomType.CLASSROOM != null)
+    	if(r==RoomType.CLASSROOM)
     		n=30;
     		
-    	if(RoomType.TPROOM != null)
+    	if(r==RoomType.TPROOM)
     		n=20;
-    	else if(RoomType.TDROOM!=null)
+    	else if(r==RoomType.TDROOM)
     		n=20;
 		return n;
 }

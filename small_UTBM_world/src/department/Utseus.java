@@ -14,7 +14,7 @@ public class Utseus extends Department{
 	 public  int attack(int numunite, RoomType r)
 	{
 		 int n;
-	    	if(RoomType.CHINESECLASS!= null)
+	    	if(r==RoomType.CHINESECLASS)
 	    		n=2*numunite;
 	    	else n=1*numunite;
 	    	return n;

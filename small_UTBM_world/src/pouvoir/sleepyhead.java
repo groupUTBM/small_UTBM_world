@@ -9,28 +9,28 @@ public class sleepyhead extends pouvoir {
 	    }
 	    public int bonusattack(RoomType r){
 	    	int n;
-	    	if(RoomType.DORMITORY != null)
+	    	if(r==RoomType.DORMITORY)
 	    		n=3;
 	    	else n=1;
 	    	return n;
 	    	}
 		public   int bonusdefense(RoomType r)
 		{int n;
-		if(RoomType.DORMITORY != null)
+		if(r==RoomType.DORMITORY)
 			n=2;
 		else n=1;
 		return n;
 		}
 		public   int peoplecarry(RoomType r)
 		{int n;
-		if(RoomType.DORMITORY != null)
+		if(r==RoomType.DORMITORY)
 			n=4;
 		else n=2;
 		return n;
 	}
 		public int gainbonus(RoomType r)    //chaque tour
 		{int n=0;
-			if(RoomType.DORMITORY != null)
+			if(r==RoomType.DORMITORY)
 				n=30;
 			else n=20;
 			return n;

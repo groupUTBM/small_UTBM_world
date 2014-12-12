@@ -1,11 +1,10 @@
 package pouvoir;
-import pion.pion;
+
 import model.RoomType;
-import model.Map;
+
 public abstract class pouvoir {
 	protected int peoplecarry;
 	protected String name;
-	protected pion p;
 	protected String description;
 	abstract public  int bonusattack(RoomType r);
 	abstract public   int bonusdefense(RoomType r);
@@ -15,11 +14,10 @@ public abstract class pouvoir {
 		name="";
 		description="";
 		peoplecarry=0;
-		p=null;
+		
 	}
 	public void setname(String s){
-		this.name=s;
-		
+		this.name=s;	
 	}
 	public void setdescription(String s){
 		this.description=s;
