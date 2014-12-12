@@ -32,7 +32,7 @@ public class EnterNamePlayer extends JPanel {
 	private JLabel affiche = new JLabel();
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private int nbPlayers = 2;
-	private int i = 0;
+	private int i,j;
 	private String listPlayersName;
 	
 	private JTextField enter = new JTextField(20);
@@ -72,12 +72,31 @@ public class EnterNamePlayer extends JPanel {
 					if(enter.getText().isEmpty()){
 						
 					}
-					else{
+					else if(players.isEmpty()){
 						players.add(new Player(enter.getText()));
-						i++;
-						listPlayersName+=enter.getText()+"<br>";
+						listPlayersName+="Joueur"+(i+1)+":"+enter.getText()+"<br>";
 						affiche.setText(listPlayersName+"</html>");
 						enter.setText("");
+						i++;
+					}
+					else{
+						
+						j = 0;
+						while(j<i && !enter.getText().equals(players.get(j).getName()) ){
+								j++;
+						}
+						System.out.println(j+" "+i);
+						if (j==i){
+							players.add(new Player(enter.getText()));
+							listPlayersName+="Joueur"+(i+1)+":"+enter.getText()+"<br>";
+							affiche.setText(listPlayersName+"</html>");
+							enter.setText("");
+							i++;
+						}
+						else{
+							enter.setText("");
+							affiche.setText(listPlayersName+"<br>Le nom existe, veuillez changer un autre</html> ");
+						}
 					}
 				}
 				
