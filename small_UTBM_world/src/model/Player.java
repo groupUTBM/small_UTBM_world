@@ -78,4 +78,8 @@ public class Player  {
    public void setColor(Color c){
 	   color=c;
    }
+   public Color getColor(){
+	   return color;
+   }
+   
 }
