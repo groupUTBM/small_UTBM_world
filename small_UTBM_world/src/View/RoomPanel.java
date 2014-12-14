@@ -25,7 +25,6 @@ public class RoomPanel extends JPanel {
 	
 	public RoomPanel(int pX, int pY, GameController g){
 		this.gc=g;
-		
 		setPreferredSize(new Dimension(60,60));
 		setBackground(color);
 		posX = pX;
@@ -45,7 +44,8 @@ public class RoomPanel extends JPanel {
 	}
 	public void mouseOnTop(){
 		if(!selected)
-		setBackground(Color.GRAY);
+		setBackground(Color.gray);
+			
 	}
 	public void mouseExited(){
 		if(!selected)
@@ -54,7 +54,7 @@ public class RoomPanel extends JPanel {
 	public void mouseClicked(){
 		if(!selected){
 			selected=true;
-			this.setBackground(Color.red);
+			setBackground(color);
 		}
 	}
 	public void mouseRightClicked(){
@@ -69,6 +69,10 @@ public class RoomPanel extends JPanel {
 		g.drawString(Integer.toString(nbUnits), 0, 10);
 		g.setFont(new Font("Dialog",0,9));
 		g.drawString(type, 0, 50);
+		if(selected != false){
+			g.setColor(new Color(0,0,0));
+			g.fillOval(this.getPosX()%4+4, this.getPosY()/4+4, 35,35);
+		}
 	}
 	public void update(Room r){
 		nbUnits = r.getNbUnits();
@@ -83,22 +87,22 @@ public class RoomPanel extends JPanel {
 			color = new Color(255,231,186);
 			break;
 		case COMPUTERROOM :
-			color = new Color(230,230,250);
+			color = new Color(151,255,255);
 			break;
 		case DORMITORY : 
-			color = new Color(105,105,105);
+			color = new Color(205,201,201);
 			break;
 		case GRASS : 
 			color = new Color(202,255,112);
 			break;
 		case GYM : 
-			color = new Color(255,218,185);
+			color = new Color(255,246,143);
 			break;
 		case MECANICCLASS :
-			color = new Color(198,226,255);
+			color = new Color(230,230,250);
 			break;
 		case TDROOM :
-			color = new Color(255,228,196);
+			color = new Color(255,193,193);
 			break;
 		case TPROOM :
 			color = new Color(221,160,221);
