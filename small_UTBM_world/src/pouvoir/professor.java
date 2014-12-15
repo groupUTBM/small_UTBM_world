@@ -6,8 +6,8 @@ public class professor extends pouvoir{
 	professor(){
 		this.setname("professor");
 	    this.setdescription("class begin!");
-	    }
-	    public int bonusattack(RoomType r){
+	}
+	   public int bonusattack(RoomType r){
 	    int n = 0;
 	    	if(r==RoomType.CLASSROOM)
 	    		n=3;

@@ -7,16 +7,17 @@ import view.RoomPanel;
 public class Room {
 	private RoomPanel rp;
 	private RoomType rt;
-	private int nbUnits = 2;
+	private int nbUnits = 0;
 	private ArrayList<Pawn> pawns;
 	private int i;
+	private Player owner=new Player("null");
 	
 	public Room(RoomPanel rp){
 		this.rp = rp;
 		pawns = new ArrayList<Pawn>();
-		for(i=0;i<nbUnits;i++){
-			pawns.add(new Pawn(this));
-		}
+//		for(i=0;i<nbUnits;i++){
+//			pawns.add(new Pawn(this));
+//		}
 		
 		i=(int)(Math.random()*10);
 		switch(i){
@@ -65,21 +66,33 @@ public class Room {
 		return pawns.get(nbUnits-1);
 	}
 	public void addPawn(Pawn p){
+		if(pawns.isEmpty()){
+			owner= p.getOwner();
+			System.out.println(owner.getName());
+		}
 		pawns.add(p);
 		nbUnits++;
 		rp.update(this);
 	}
 	public Pawn pullTopPawn(){
-		Pawn p = pawns.get(nbUnits-1);
-		pawns.remove(nbUnits-1);
-		nbUnits--;
-		rp.update(this);
-		return p;
+		if(nbUnits>0){
+			Pawn p = pawns.get(nbUnits-1);
+			pawns.remove(nbUnits-1);
+			nbUnits--;
+			rp.update(this);
+			return p;
+		}
+		else
+			return null;
+		
 	}
 	public RoomPanel getRoomPanel(){
 		return rp;
 	}
 	public RoomType getRoomType(){
 		return rt;
+	}
+	public Player getOwner(){
+		return owner;
 	}
 }

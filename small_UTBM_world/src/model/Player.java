@@ -14,7 +14,7 @@ public class Player  {
    private ArrayList<Room> rooms;
    private int nbRooms;
    private ArrayList<Pawn> pawnsInHand;
-   private int nbPawnsInHand=0;
+   private int nbPawnsInHand=20;
    private int i;
    private MouseEffectComponent mec;
    private Color color=new Color(0,0,0);
@@ -27,6 +27,9 @@ public class Player  {
 	   depa=new Utseus();
 	   rooms= new ArrayList<Room>();
 	   pawnsInHand = new ArrayList<Pawn>();
+	   for(i=0;i<nbPawnsInHand;i++){
+		   pawnsInHand.add(new Pawn(null,this));
+	   }
    }
    
    public void declin(){
@@ -45,10 +48,13 @@ public class Player  {
 		   return true;
    }
    public void takePawn(Room r){
-	   pawnsInHand.add(r.pullTopPawn());
-	   nbPawnsInHand++;
-	   if(mec != null)
+	   if (r.getNbUnits()> 0){
+		   pawnsInHand.add(r.pullTopPawn());
+		   nbPawnsInHand++;
+		   if(mec != null)
 		   mec.updateNb(nbPawnsInHand);
+	   }
+	   
    }
    public void putPawn(Room r){
 	   if(nbPawnsInHand >= 1){

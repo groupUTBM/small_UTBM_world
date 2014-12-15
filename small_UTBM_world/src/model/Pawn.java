@@ -2,11 +2,12 @@ package model;
 
 public class Pawn {
 	private Room actualRoom;
-	public Pawn(Room r){
+	private Player owner;
+	public Pawn(Room r, Player ownr){
 		actualRoom=r;
+		owner=ownr;
 	}
-	public void move(Room r){
-		r.addPawn(this);
-		actualRoom = r;
+	public Player getOwner(){
+		return owner;
 	}
 }

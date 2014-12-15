@@ -21,6 +21,7 @@ public class RoomPanel extends JPanel {
 	private RoomPanelListener rpl;
 	private GameController gc;
 	private Color color = new Color(0,0,0);
+	private Color pawnColor =  new Color(0,0,0);
 	private String type;
 	
 	public RoomPanel(int pX, int pY, GameController g){
@@ -67,15 +68,19 @@ public class RoomPanel extends JPanel {
 		super.paintComponent(g);
 		g.setColor(new Color(255-(int)(color.getRed()*0.8), 255-(int)(color.getGreen()*0.8), 255-(int)(color.getBlue()*0.8)));
 		g.drawString(Integer.toString(nbUnits), 0, 10);
+		
 		g.setFont(new Font("Dialog",0,9));
 		g.drawString(type, 0, 50);
-		if(selected != false){
-			g.setColor(new Color(0,0,0));
-			g.fillOval(this.getPosX()%4+4, this.getPosY()/4+4, 35,35);
-		}
+		
+		
+		g.setColor(pawnColor);
+		int size = (int)(10*Math.log((double)nbUnits));
+		
+		g.fillOval(getWidth()/2-size/2, getHeight()/2-size/2, size,size);
 	}
 	public void update(Room r){
 		nbUnits = r.getNbUnits();
+		pawnColor= r.getOwner().getColor();
 		switch(r.getRoomType()){
 		case BAR :
 			color = new Color(139,0,0);
