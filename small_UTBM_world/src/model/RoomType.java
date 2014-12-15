@@ -10,7 +10,9 @@ public enum RoomType{
 	, DORMITORY("BEDS")
 	, CHINESECLASS("CHINESE")
 	, MECANICCLASS("MECANIC")
-	, GRASS("GRASS");
+	, GRASS("GRASS")
+	, CLEARING("CLEARING")
+	;
 	
 	String label;
 	
