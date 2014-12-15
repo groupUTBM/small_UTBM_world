@@ -29,10 +29,12 @@ import controller.StartButtonListener;
 
 public class EnterNamePlayer extends JPanel {
 	private JLabel title = new JLabel();
+	private JLabel condition = new JLabel();
 	private JLabel affiche = new JLabel();
 	private ArrayList<Player> players = new ArrayList<Player>();
-	private int nbPlayers = 2;
+	private int nbPlayers = 6;
 	private int i,j;
+	int g=1;
 	private String listPlayersName;
 	
 	private JTextField enter = new JTextField(20);
@@ -47,14 +49,20 @@ public class EnterNamePlayer extends JPanel {
 		gbl = new GameButtonListener(gp);
 		sbl = new StartButtonListener(gp);
 		
-		setLayout(new FlowLayout(FlowLayout.CENTER,600,70));
+		setLayout(new FlowLayout(FlowLayout.CENTER,600,60));
 		
-		title.setText("SAISISSEZ VOS NOMS");
+		title.setText("ADD YOUR PLAYERS");
 		title.setForeground(Color.white);
 		title.setFont(new java.awt.Font("Dialog", 1, 20));
 		title.getText();
 		System.out.println(title.getText());
 		title.setBackground(Color.black);
+		
+		condition.setText("The number of player should between 2 and 6");
+		condition.setForeground(Color.white);
+		condition.setFont(new java.awt.Font("Dialog", 1, 15));
+
+		
 		JPanel jpTextField = new JPanel();
 		jpTextField.setBackground(Color.black);
 		jpTextField.setLayout(new BorderLayout(5,0));
@@ -62,10 +70,12 @@ public class EnterNamePlayer extends JPanel {
 		jpTextField.add(valid,BorderLayout.EAST);
 		enter.setHorizontalAlignment(JTextField.RIGHT);
 		
-		affiche.setPreferredSize(new Dimension(150,180));
+		
+		
+		affiche.setPreferredSize(new Dimension(150,150));
 		affiche.setForeground(Color.WHITE);
 		i=0;
-//		listPlayersName = "<html>";
+		listPlayersName = "<html>";
 		valid.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(i < nbPlayers){
@@ -93,16 +103,20 @@ public class EnterNamePlayer extends JPanel {
 							enter.setText("");
 							i++;
 						}
-						else{
+						else {
 							enter.setText("");
 							affiche.setText(listPlayersName+"<br>Le nom existe, veuillez changer un autre</html> ");
 						}
 					}
+					
 				}
 				
-				else
+				else 
 					affiche.setText(listPlayersName+"<br>Nombre maximum de joueur atteint</html> ");
+				
+				//g++;
 			}
+			
 		});
 		
 		
@@ -113,11 +127,10 @@ public class EnterNamePlayer extends JPanel {
 				
 		setBackground(Color.black);
 		add(title);	
+		add(condition);
 		add(jpTextField);
 		add(affiche);
 		add(jpButton);
-		
-		
 		
 		start.addMouseListener(gbl);
 		back.addMouseListener(sbl);
@@ -137,10 +150,11 @@ public class EnterNamePlayer extends JPanel {
 	public int getCurrNbPlayer(){
 		return i;
 	}
-	public int getNbPlayer(){
-		return nbPlayers;
-	}
+	/*public int getNbPlayer(){
+		return 2;
+	}*/
 	public void showErrMess(){
-		affiche.setText(listPlayersName+"<br>Vous devez entrer plus de noms de joueur.</html> ");
+		affiche.setText(listPlayersName+"<br>Vous devez entrer au moins 2 joueur.</html> ");
+		System.out.println("error");
 	}
 }

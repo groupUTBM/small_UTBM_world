@@ -52,8 +52,7 @@ public class GlobalPanel extends JPanel {
 		add(cnbPan,"chooseNbPan");
 		cl.show(this, "chooseNbPan");
 	}
-	public void showEnterNamePan(int nbPlayers){
-		enpPan.init(nbPlayers);
+	public void showEnterNamePan(){		
 		cl.show(this, "enterNamePan");
 	}
 }

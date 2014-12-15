@@ -17,7 +17,7 @@ public class NextButtonListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		gp.showEnterNamePan(gp.getCnbPan().getNbPlayers());
+		gp.showEnterNamePan();
 		
 	}
 

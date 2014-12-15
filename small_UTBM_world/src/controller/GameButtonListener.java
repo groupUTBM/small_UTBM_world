@@ -19,11 +19,13 @@ private GlobalPanel gp;
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(gp.getEnp().getCurrNbPlayer() < gp.getEnp().getNbPlayer()){
-			gp.getEnp().showErrMess();
-		}
-		else{
+		System.out.println(gp.getEnp().getCurrNbPlayer());
+		if(gp.getEnp().getCurrNbPlayer() >= 2 && gp.getEnp().getCurrNbPlayer() <=6){
 			gp.showGamePan();
+		}
+		else{	
+			System.out.println("errormess");
+			gp.getEnp().showErrMess();
 		}
 	
 		

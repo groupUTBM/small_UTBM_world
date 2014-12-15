@@ -9,14 +9,14 @@ import model.Game;
 //Pour enter l'ecran de choisir le nombre de joueur
 public class StartButtonListener implements MouseListener {
 
-	private GlobalPanel globalPan;
+	private GlobalPanel gp;
 	
 	public StartButtonListener( GlobalPanel gp){
-		globalPan = gp;
+		this.gp = gp;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		globalPan.showChooseNbPan();
+		gp.showEnterNamePan();
 	}
 
 	@Override
