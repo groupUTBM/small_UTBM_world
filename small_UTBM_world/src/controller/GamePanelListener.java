@@ -38,6 +38,8 @@ public class GamePanelListener implements MouseMotionListener, MouseListener {
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+		
+		
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {

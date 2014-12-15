@@ -1,9 +1,18 @@
 package controller;
 
+import java.awt.Color;
 import java.awt.Event;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 
 import view.GamePanel;
 import view.RoomPanel;
@@ -12,6 +21,7 @@ import model.Player;
 import model.Room;
 
 public class RoomPanelListener implements MouseListener, MouseMotionListener {
+	
 	private Room room;
 	private RoomPanel roomPan;
 	private GameController gc;
@@ -27,6 +37,7 @@ public class RoomPanelListener implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		roomPan.mouseClicked();
 		
 	}
 

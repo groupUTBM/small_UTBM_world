@@ -22,6 +22,7 @@ public class MouseEffectComponent extends JComponent{
 		g.setColor(color);
 		g.setFont(new Font("Dialog",0,20));
 		g.drawString(Integer.toString(nbPawnInHand), pX, pY);
+		g.fillOval(pX, pY, 25,25);
 	}
 
 	public void update(int positionX, int positionY) {

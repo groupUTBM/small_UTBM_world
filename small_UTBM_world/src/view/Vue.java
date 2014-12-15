@@ -23,7 +23,7 @@ public class Vue extends JPanel
 	//private vue(Player P)
 	public Vue(Player p)
 	{
-		// création des textes
+		// cr?ation des textes
 		Font police = new Font("Arial", Font.BOLD, 12);
 	    /*ecranNom = new JLabel(P.getNom());
 	    ecranPeuple = new JLabel(P.getDepartment().get_name());*/
@@ -54,7 +54,7 @@ public class Vue extends JPanel
 	    panPeuple.setBorder(BorderFactory.createLineBorder(p.getColor()));
 	    panPoint.setBorder(BorderFactory.createLineBorder(p.getColor()));
 	    
-	    // création du conteneur
+	    // cr?ation du conteneur
 	    this.setLayout(new GridLayout(3, 2, 0, 0));
 	    this.add(panNom);
 	    this.add(ecranNom);

@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Graphics;
+
 import view.GamePanel;
 import model.Game;
 import model.Map;
