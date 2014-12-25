@@ -2,26 +2,27 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import model.Game;
-import model.Player;
-
 public class GlobalPanel extends JPanel {
+	
+	private static final long serialVersionUID = -6726502932861804628L;
 	private GamePanel gamePan;
-	private JPanel testPan = new JPanel();
+	private JPanel testPan;
 	private WelcomePanel welcomePan;
 	private ChooseNbPlayer cnbPan;
 	private EnterNamePlayer enpPan;
 	
-	private CardLayout cl = new CardLayout();
+	private CardLayout cl;
 	
 	public GlobalPanel(){
+		//instantiations
+		testPan = new JPanel();
+		cl = new CardLayout();
 		welcomePan=new WelcomePanel(this);
 		enpPan = new EnterNamePlayer(this);
-		
+		//GUI
 		setLayout(cl);
 		testPan.setBackground(Color.pink);
 		add(testPan, "testpanel");
@@ -32,7 +33,7 @@ public class GlobalPanel extends JPanel {
 		cl.show(this, "welcomePan");
 		
 	}
-	
+	//getters
 	public GamePanel getGamePanel(){
 		return gamePan;
 	}
@@ -42,6 +43,7 @@ public class GlobalPanel extends JPanel {
 	public EnterNamePlayer getEnp(){
 		return enpPan;
 	}
+	//fonctions permettant de changer le panel affiché
 	public void showGamePan(){
 		gamePan = new GamePanel(enpPan.getListPlayers());
 		add(gamePan,"gamePan");

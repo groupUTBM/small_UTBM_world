@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,29 +9,37 @@ import javax.swing.JPanel;
 
 import controller.GameController;
 import controller.RoomPanelListener;
-import model.Game;
 import model.Room;
 
 public class RoomPanel extends JPanel {
+
+	private static final long serialVersionUID = 4054159238431524947L;
 	private int posX,posY;
-	private int nbUnits = 0;
+	private int nbUnits;
 	private boolean selected;
 	
 	private RoomPanelListener rpl;
 	private GameController gc;
-	private Color color = new Color(0,0,0);
-	private Color pawnColor =  new Color(0,0,0);
+	private Color color;
+	private Color pawnColor;
 	private String type;
 	
 	public RoomPanel(int pX, int pY, GameController g){
+		//instanciation :
+		nbUnits=0;
+		color = new Color(0,0,0);
+		pawnColor =  new Color(0,0,0);
 		this.gc=g;
-		setPreferredSize(new Dimension(60,60));
-		setBackground(color);
 		posX = pX;
 		posY = pY;
+		//GUI :
+		setPreferredSize(new Dimension(60,60));
+		setBackground(color);
+		
 		setVisible(true);
 	}
 	public void addRoomPanelListener(RoomPanelListener rplst){
+		//permet l'ajout externe des listeners
 		this.rpl=rplst;
 		addMouseListener(rpl);
 		addMouseMotionListener(rpl);
@@ -65,55 +72,59 @@ public class RoomPanel extends JPanel {
 		}
 	}
 	public void paintComponent(Graphics g){
+		//comme on veut garder l'affichage des fonds
 		super.paintComponent(g);
+		//affichage du nombre d'unité
 		g.setColor(new Color(255-(int)(color.getRed()*0.8), 255-(int)(color.getGreen()*0.8), 255-(int)(color.getBlue()*0.8)));
 		g.drawString(Integer.toString(nbUnits), 0, 10);
-		
+		//affichage du type de salle
 		g.setFont(new Font("Dialog",0,9));
 		g.drawString(type, 0, 50);
 		
-		
+		//affichage d'un ovale indiquant le nombre de pions et leur appartenance
 		g.setColor(pawnColor);
 		int size = (int)(10*Math.log((double)nbUnits));
-		
 		g.fillOval(getWidth()/2-size/2, getHeight()/2-size/2, size,size);
 	}
 	public void update(Room r){
+		//met à jour l'affichage du nombre d'unité, la couleur des pions et du type de salle
 		nbUnits = r.getNbUnits();
 		pawnColor= r.getOwner().getColor();
+		type = r.getRoomType().getLabel();
+		//associe à chaque type de salle une couleur
 		switch(r.getRoomType()){
 		case BAR :
-			color = new Color(139,0,0);
+			color = Colors.getBarColor();
 			break;
 		case CHINESECLASS :
-			color = new Color(238,64,0);
+			color = Colors.getChineseClassColor();
 			break;
 		case CLASSROOM : 
-			color = new Color(255,231,186);
+			color = Colors.getClassColor();
 			break;
 		case COMPUTERROOM :
-			color = new Color(151,255,255);
+			color = Colors.getComputerColor();
 			break;
 		case DORMITORY : 
-			color = new Color(205,201,201);
+			color = Colors.getDormColor();
 			break;
 		case GRASS : 
-			color = new Color(202,255,112);
+			color = Colors.getGrassColor();
 			break;
 		case GYM : 
-			color = new Color(255,246,143);
+			color = Colors.getGymColor();
 			break;
 		case MECANICCLASS :
-			color = new Color(230,230,250);
+			color = Colors.getMecaColor();
 			break;
 		case TDROOM :
-			color = new Color(255,193,193);
+			color = Colors.getTdRoomColor();
 			break;
 		case TPROOM :
-			color = new Color(221,160,221);
+			color = Colors.getTpRoomColor();
 			break;
 		}
-		type = r.getRoomType().getLabel();
+		
 		setBackground(color);
 		repaint();
 	}

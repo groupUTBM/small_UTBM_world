@@ -3,52 +3,84 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-//import java.awt.GridBagConstraints;
-//import java.awt.GridBagLayout;
-
-
-
-
-
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-//import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
 import model.Player;
 import controller.GameButtonListener;
 import controller.StartButtonListener;
-
+/*Panel permettant à l'utilisateur d'ajouter des joueurs tout en 
+indiquant leur nom.*/
 public class EnterNamePlayer extends JPanel {
-	private JLabel title = new JLabel();
-	private JLabel condition = new JLabel();
-	private JLabel affiche = new JLabel();
-	private ArrayList<Player> players = new ArrayList<Player>();
-	private int nbPlayers = 6;
+
+	private static final long serialVersionUID = 7033862737017458070L;
+	private JLabel title;
+	private JLabel condition;
+	private JLabel affiche;
+	private ArrayList<Player> players;
+	private int nbPlayers;
 	private int i,j;
-	int g=1;
 	private String listPlayersName;
 	
-	private JTextField enter = new JTextField(20);
-	private JButton valid = new JButton("+");
-	private JButton start = new JButton("Commencer");
-	private JButton back = new JButton("Retour");
+	private JTextField enter;
+	private JButton valid;
+	private JButton start;
+	private JButton back;
 	private GameButtonListener gbl;
 	private StartButtonListener sbl;
 
-	
+	//constructeur
 	public EnterNamePlayer(GlobalPanel gp){
+		instantiations(gp);
+		configurationGUI();
+	}
+	// fonction permettant de réinitialiser quand on clique sur "Retour"
+	public void init(int nb){
+		nbPlayers = nb;
+		System.out.println(nb);
+		listPlayersName = "<html>";
+		affiche.setText("");
+		enter.setText("");
+		players = new ArrayList<Player>();
+		i=0;
+	}
+	
+	/*public int getNbPlayer(){
+		return 2;
+	}*/
+	public void showErrMess(){
+		affiche.setText(listPlayersName+"<br>Vous devez entrer au moins 2 joueur.</html> ");
+		System.out.println("error");
+	}
+	//getters
+	public ArrayList<Player> getListPlayers(){
+		return players;
+	}
+	public int getCurrNbPlayer(){
+		return i;
+	}
+	//Fonctions à usage interne
+	private void instantiations(GlobalPanel gp){
+		title = new JLabel();
+		condition = new JLabel();
+		affiche = new JLabel();
+		players = new ArrayList<Player>();
+		enter  = new JTextField(20);
+		valid = new JButton("+");
+		start = new JButton("Commencer");
+		back = new JButton("Retour");
 		gbl = new GameButtonListener(gp);
 		sbl = new StartButtonListener(gp);
-		
+		nbPlayers = 6;
+	}
+	private void configurationGUI(){
 		setLayout(new FlowLayout(FlowLayout.CENTER,600,60));
 		
 		title.setText("ADD YOUR PLAYERS");
@@ -76,6 +108,7 @@ public class EnterNamePlayer extends JPanel {
 		affiche.setForeground(Color.WHITE);
 		i=0;
 		listPlayersName = "<html>";
+		
 		valid.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(i < nbPlayers){
@@ -134,27 +167,5 @@ public class EnterNamePlayer extends JPanel {
 		
 		start.addMouseListener(gbl);
 		back.addMouseListener(sbl);
-	}
-	public void init(int nb){
-		nbPlayers = nb;
-		System.out.println(nb);
-		listPlayersName = "<html>";
-		affiche.setText("");
-		enter.setText("");
-		players = new ArrayList<Player>();
-		i=0;
-	}
-	public ArrayList<Player> getListPlayers(){
-		return players;
-	}
-	public int getCurrNbPlayer(){
-		return i;
-	}
-	/*public int getNbPlayer(){
-		return 2;
-	}*/
-	public void showErrMess(){
-		affiche.setText(listPlayersName+"<br>Vous devez entrer au moins 2 joueur.</html> ");
-		System.out.println("error");
 	}
 }

@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -14,14 +13,17 @@ import controller.RoomPanelListener;
 public class MapPanel extends JPanel {
 
 	private static final long serialVersionUID = -6295434850309030057L;
-	private ArrayList<RoomPanel> roomsPans = new ArrayList<RoomPanel>();
-	
+	private ArrayList<RoomPanel> roomsPans;
 	private GridLayout gl = new GridLayout(10,10);
 	private int i;
 	private GameController gc;
 	
 	public MapPanel(GameController g){
+		//instantiation
+		roomsPans = new ArrayList<RoomPanel>();
+		gl = new GridLayout(10,10);
 		this.gc=g;
+		//GUI
 		this.setMinimumSize(new Dimension(600,600));
 		this.setBackground(Color.red);
 		this.setLayout(gl);
@@ -30,7 +32,6 @@ public class MapPanel extends JPanel {
 		for(i=0; i< 100 ; i++){
 			roomsPans.add(new RoomPanel(i%10, i/10,gc));
 			add(roomsPans.get(i));
-//			gl.addLayoutComponent("g",rooms.get(i));
 		}
 		
 	}
@@ -39,6 +40,7 @@ public class MapPanel extends JPanel {
 		return roomsPans.get(y*10 + x);
 	}
 	public void addRoomListeners(GameController gamec){
+		//permet l'ajout externe des listeners de chaque salle
 		for(i=0; i< 100 ; i++){
 			roomsPans.get(i).addRoomPanelListener(new RoomPanelListener(gamec.getGame().getMap().getRoom(i%10, i/10)
 					, getRoomPan(i%10,i/10), gamec));

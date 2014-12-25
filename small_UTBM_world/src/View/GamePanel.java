@@ -6,14 +6,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import model.Game;
 import model.Player;
@@ -25,28 +25,55 @@ public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 405461811821501769L;
 	private MapPanel mapPnl;
 	private PlayerListPanel playerLstPnl;
-	private JPanel containerPan = new JPanel();
+	private JPanel containerPan;
 	private MouseEffectComponent mec;
-	private JButton nextTurnBtn = new JButton("next Turn");
+	private JButton nextTurnBtn;
 	
-	private GridBagConstraints gbc = new GridBagConstraints();
-	private GridBagLayout gbl= new GridBagLayout();
-	private CardLayout cl = new CardLayout();
+	private GridBagConstraints gbc;
+	private GridBagLayout gbl;
+	private CardLayout cl;
 	
 	private GameController gc;
-	private Game game;
 	
 	private GamePanelListener gpl;
+	private Toolkit tk;
 	
 	public GamePanel( ArrayList<Player> players){
+		instantiations(players);
+		configurationGUI();
+		
+	}
+	
+	public void paintComponent(Graphics g){//important pour toujours voir le mec
+		super.paintComponent(g);
+		mec.repaint();
+	}
+	//getters
+	public MapPanel getMapPanel(){
+		return mapPnl;
+	}
+	public MouseEffectComponent getMec(){
+		return mec;
+	}
+	//Fonctions à usage interne
+	private void instantiations(ArrayList<Player> players){
 		mec = new MouseEffectComponent();
 		gpl = new GamePanelListener(mec);
 		mapPnl = new MapPanel(gc);
+		
+		
+		gbc = new GridBagConstraints();
+		gbl = new GridBagLayout();
+		cl = new CardLayout();
 		gc = new GameController(new Game(this,players));
+		tk = getToolkit();
 		
 		mapPnl.addRoomListeners(gc);
 		playerLstPnl = new PlayerListPanel(players);
-		
+		nextTurnBtn = new JButton("next Turn");
+		containerPan = new JPanel();
+	}
+	private void configurationGUI(){
 		setPreferredSize(new Dimension(800,600));
 		setBackground(Color.BLACK);
 		containerPan.setLayout(gbl);
@@ -81,18 +108,12 @@ public class GamePanel extends JPanel {
 		
 		addMouseMotionListener(gpl);
 		add(mec, 0);
+		this.setCursor(tk.createCustomCursor(tk.getImage(""), new Point(), "no_cursor"));
+		
 		mec.setVisible(true);
 		containerPan.setVisible(true);
 	}
 	
-	public MapPanel getMapPanel(){
-		return mapPnl;
-	}
-	public MouseEffectComponent getMec(){
-		return mec;
-	}
-	public void paintComponent(Graphics g){//important in order to always see mec
-		super.paintComponent(g);
-		mec.repaint();
-	}
+	
+
 }

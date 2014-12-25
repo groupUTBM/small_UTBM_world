@@ -95,4 +95,7 @@ public class Room {
 	public Player getOwner(){
 		return owner;
 	}
+	public void setRoomType(RoomType r){
+		rt = r;
+	}
 }
