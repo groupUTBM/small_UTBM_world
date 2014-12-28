@@ -27,7 +27,7 @@ public class GamePanel extends JPanel {
 	private PlayerListPanel playerLstPnl;
 	private JPanel containerPan;
 	private MouseEffectComponent mec;
-	private JButton nextTurnBtn;
+	private NextTurnButton nextTurnBtn;
 	
 	private GridBagConstraints gbc;
 	private GridBagLayout gbl;
@@ -55,6 +55,9 @@ public class GamePanel extends JPanel {
 	public MouseEffectComponent getMec(){
 		return mec;
 	}
+	public NextTurnButton getNextTurnButton(){
+		return nextTurnBtn;
+	}
 	//Fonctions à usage interne
 	private void instantiations(ArrayList<Player> players){
 		mec = new MouseEffectComponent();
@@ -70,7 +73,7 @@ public class GamePanel extends JPanel {
 		
 		mapPnl.addRoomListeners(gc);
 		playerLstPnl = new PlayerListPanel(players);
-		nextTurnBtn = new JButton("next Turn");
+		nextTurnBtn = new NextTurnButton(gc);
 		containerPan = new JPanel();
 	}
 	private void configurationGUI(){
@@ -78,7 +81,6 @@ public class GamePanel extends JPanel {
 		setBackground(Color.BLACK);
 		containerPan.setLayout(gbl);
 		setLayout(cl);
-		nextTurnBtn.setMaximumSize(new Dimension(100,200));
 		playerLstPnl.setMinimumSize(new Dimension(200, 500));
 		
 		gbc.fill = GridBagConstraints.BOTH;
@@ -94,15 +96,6 @@ public class GamePanel extends JPanel {
 		gbc.gridx = 1;
 		gbc.gridy = GridBagConstraints.RELATIVE;
 		containerPan.add(nextTurnBtn,gbc);
-		
-		nextTurnBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gc.getGame().nextTurn();
-				
-			}
-		});
 		
 		add(containerPan,"contPan");
 		

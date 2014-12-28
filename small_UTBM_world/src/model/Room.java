@@ -7,17 +7,20 @@ import view.RoomPanel;
 public class Room {
 	private RoomPanel rp;
 	private RoomType rt;
+	private int posX, posY;
 	private int nbUnits = 0;
 	private ArrayList<Pawn> pawns;
 	private int i;
-	private Player owner=new Player("null");
+	private Player owner;
+	private boolean isBorder;
 	
 	public Room(RoomPanel rp){
+		posX = rp.getPosX();
+		posY = rp.getPosY();
+		if(posX==0 || posX == 9 || posY == 0 || posY == 9)
+			isBorder=true;
 		this.rp = rp;
 		pawns = new ArrayList<Pawn>();
-//		for(i=0;i<nbUnits;i++){
-//			pawns.add(new Pawn(this));
-//		}
 		
 		i=(int)(Math.random()*10);
 		switch(i){
@@ -94,6 +97,23 @@ public class Room {
 	}
 	public Player getOwner(){
 		return owner;
+	}
+	public int getPosX(){
+		return posX;
+	}
+	public int getPosY(){
+		return posY;
+	}
+	public boolean isAdjacent(Room r){
+		if(Math.abs(r.getPosX()-this.getPosY()) <= 1
+			&& Math.abs(r.getPosY()-this.getPosY()) <= 1){
+			return true;
+		}
+		else
+			return false;
+	}
+	public boolean isBorder(){
+		return isBorder;
 	}
 	public void setRoomType(RoomType r){
 		rt = r;

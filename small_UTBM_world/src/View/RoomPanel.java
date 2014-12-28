@@ -89,7 +89,14 @@ public class RoomPanel extends JPanel {
 	public void update(Room r){
 		//met à jour l'affichage du nombre d'unité, la couleur des pions et du type de salle
 		nbUnits = r.getNbUnits();
-		pawnColor= r.getOwner().getColor();
+		if(r.getNbUnits()==0){
+			pawnColor= Color.BLACK;
+		}
+		else
+		{
+			pawnColor= r.getOwner().getColor();
+		}
+		
 		type = r.getRoomType().getLabel();
 		//associe à chaque type de salle une couleur
 		switch(r.getRoomType()){
@@ -130,5 +137,9 @@ public class RoomPanel extends JPanel {
 	}
 	public String toString(){
 		return "RoomPanel";
+	}
+	public GameController getGC(){
+		return gc;
+		
 	}
 }

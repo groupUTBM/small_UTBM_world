@@ -48,19 +48,43 @@ public class Player  {
 		   return true;
    }
    public void takePawn(Room r){
-	   if (r.getNbUnits()> 0){
+	   if (r.getNbUnits()> 0 && r.getOwner() == this){
 		   pawnsInHand.add(r.pullTopPawn());
 		   nbPawnsInHand++;
 		   if(mec != null)
 		   mec.updateNb(nbPawnsInHand);
 	   }
-	   
+	   nbRooms=rooms.size();
    }
    public void putPawn(Room r){
-	   if(nbPawnsInHand >= 1){
+	   if(r.getOwner()==this){
+		   if(nbPawnsInHand >= 1){
 		   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
 		   pawnsInHand.remove(pawnsInHand.size()-1);
 		   nbPawnsInHand--;
+		   }
+		   if(mec != null)
+			   mec.updateNb(nbPawnsInHand);
+	   }
+//	   else if(r.getNbUnits() == 0){
+//		   if(nbPawnsInHand >= 1){
+//			   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
+//			   pawnsInHand.remove(pawnsInHand.size()-1);
+//			   nbPawnsInHand--;
+//			   }
+//			   if(mec != null)
+//				   mec.updateNb(nbPawnsInHand);
+//	   }
+	   
+   }
+   public void conquerRoom(Room r){
+	   if(conquerable(r)){
+		   if(nbPawnsInHand >= 1){
+			   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
+			   pawnsInHand.remove(pawnsInHand.size()-1);
+			   nbPawnsInHand--;
+		   }
+		  
 	   }
 	   if(mec != null)
 		   mec.updateNb(nbPawnsInHand);
@@ -86,6 +110,26 @@ public class Player  {
    }
    public Color getColor(){
 	   return color;
+   }
+   //Fonctions à usage interne
+   private boolean conquerable(Room r){
+	   boolean conquerable = false;
+	   nbRooms = rooms.size();
+	   i=0;
+	   while(i < nbRooms && rooms.get(i) != r){
+		   i++;
+		   if(r.isAdjacent(rooms.get(i))){
+			   conquerable = true;
+		   }
+	   }
+	   if( i == nbRooms && conquerable == true){
+		   return conquerable;
+	   }
+	   else if (r.isBorder()){
+		   return true;
+	   }
+	   else
+		   return false;
    }
    
 }
