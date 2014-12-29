@@ -9,15 +9,14 @@ import department.Utseus;
 
 public class Player  {
    private String name;
-   private int note=0;
    private Department depa;
    private ArrayList<Room> rooms;
    private int nbRooms;
    private ArrayList<Pawn> pawnsInHand;
-   private int nbPawnsInHand=20;
+   private int nbPawnsInHand=100;
    private int i;
    private MouseEffectComponent mec;
-   private Color color=new Color(0,0,0);
+   private Color color;
    
    public void setdepartment(Department d){
 	  depa=d;
@@ -30,22 +29,23 @@ public class Player  {
 	   for(i=0;i<nbPawnsInHand;i++){
 		   pawnsInHand.add(new Pawn(null,this));
 	   }
+	   color =  new Color(0,0,0);
    }
    
    public void declin(){
 	   
    }
-   public boolean isOwner(Room r){
-	   i=0;
-	   rooms.add(r);//temporary,
-	   nbRooms=rooms.size();//temporary
-	   while(i < nbRooms && r != rooms.get(i)){
-		   i++;
+   public void becomeOwner(Room r){
+	   r.setOwner(this);
+	   rooms.add(r);
+	   nbRooms=rooms.size();
+   }
+   public void abandonRoom(Room r){
+	   
+	   if(rooms.remove(r)){
+		   NullPlayerSingleton.getInstance().getNullPlayer().becomeOwner(r);
+		   nbRooms=rooms.size();
 	   }
-	   if(i == nbRooms)
-		   return false;
-	   else
-		   return true;
    }
    public void takePawn(Room r){
 	   if (r.getNbUnits()> 0 && r.getOwner() == this){
@@ -78,23 +78,32 @@ public class Player  {
 	   
    }
    public void conquerRoom(Room r){
-	   if(conquerable(r)){
-		   if(nbPawnsInHand >= 1){
-			   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
-			   pawnsInHand.remove(pawnsInHand.size()-1);
-			   nbPawnsInHand--;
-		   }
-		  
+	   if(canConquer(r)){
+		   if(r.getNbUnits() == 0){
+			   if(nbPawnsInHand >= 2){
+				    r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
+				    r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
+				    pawnsInHand.remove(pawnsInHand.size()-1);
+				    pawnsInHand.remove(pawnsInHand.size()-1);
+				    nbPawnsInHand-=2;
+				   }
+			   }
+			   else if(r.getOwner() != this){
+				   int nbNeeded = 2+r.getNbUnits();//rajouter le calcul du bonus ici
+				   
+				   if(nbPawnsInHand >= nbNeeded){
+					   r.returnPawns();
+					   for(i=0 ; i<nbNeeded;i++){
+						   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
+						   pawnsInHand.remove(pawnsInHand.size()-1);
+					   }
+					   nbPawnsInHand-=nbNeeded;
+				   }
+			   }
+		   nbRooms=rooms.size();
 	   }
 	   if(mec != null)
 		   mec.updateNb(nbPawnsInHand);
-   }
-   public void abandonRoom(Room r){
-	   rooms.remove(r);
-	   r.getRoomPanel().setBackground(Color.yellow);
-   }
-   public void putBackPawns(){
-//	   todo
    }
    public void setMec(MouseEffectComponent mouseEffectComponent){
 	   mec=mouseEffectComponent;
@@ -112,20 +121,24 @@ public class Player  {
 	   return color;
    }
    //Fonctions à usage interne
-   private boolean conquerable(Room r){
+   private boolean canConquer(Room r){
+	   System.out.println("can has?");
 	   boolean conquerable = false;
 	   nbRooms = rooms.size();
 	   i=0;
 	   while(i < nbRooms && rooms.get(i) != r){
-		   i++;
+		  System.out.println(rooms.get(i).getPosX()+" "+rooms.get(i).getPosY());
 		   if(r.isAdjacent(rooms.get(i))){
+			   System.out.println("adjacent");
 			   conquerable = true;
 		   }
+		   i++;
 	   }
-	   if( i == nbRooms && conquerable == true){
+	   if(i == nbRooms && conquerable == true){
+		   System.out.println("ok");
 		   return conquerable;
 	   }
-	   else if (r.isBorder()){
+	   else if (r.isBorder() && r.getOwner() != this){
 		   return true;
 	   }
 	   else

@@ -19,17 +19,15 @@ public class RoomPanel extends JPanel {
 	private boolean selected;
 	
 	private RoomPanelListener rpl;
-	private GameController gc;
 	private Color color;
 	private Color pawnColor;
 	private String type;
 	
-	public RoomPanel(int pX, int pY, GameController g){
+	public RoomPanel(int pX, int pY){
 		//instanciation :
 		nbUnits=0;
 		color = new Color(0,0,0);
 		pawnColor =  new Color(0,0,0);
-		this.gc=g;
 		posX = pX;
 		posY = pY;
 		//GUI :
@@ -51,51 +49,47 @@ public class RoomPanel extends JPanel {
 		return posY;
 	}
 	public void mouseOnTop(){
-		if(!selected)
-		setBackground(Color.gray);
+		selected=true;
 			
 	}
 	public void mouseExited(){
-		if(!selected)
-		setBackground(color);
+		selected=false;
 	}
 	public void mouseClicked(){
-		if(!selected){
-			selected=true;
-			setBackground(color);
-		}
+		
 	}
 	public void mouseRightClicked(){
-		if(selected){
-			selected=false;
-			setBackground(Color.blue);
-		}
+		
 	}
 	public void paintComponent(Graphics g){
 		//comme on veut garder l'affichage des fonds
 		super.paintComponent(g);
 		//affichage du nombre d'unité
 		g.setColor(new Color(255-(int)(color.getRed()*0.8), 255-(int)(color.getGreen()*0.8), 255-(int)(color.getBlue()*0.8)));
-		g.drawString(Integer.toString(nbUnits), 0, 10);
+		g.drawString(Integer.toString(nbUnits)+" "+posX+" "+posY, 0, 10);
 		//affichage du type de salle
 		g.setFont(new Font("Dialog",0,9));
 		g.drawString(type, 0, 50);
 		
 		//affichage d'un ovale indiquant le nombre de pions et leur appartenance
 		g.setColor(pawnColor);
-		int size = (int)(10*Math.log((double)nbUnits));
+		int size = 2+(int)(10*Math.log((double)nbUnits));
 		g.fillOval(getWidth()/2-size/2, getHeight()/2-size/2, size,size);
+		if(selected){
+			
+			g.setColor(rpl.getGC().getGame().getCurrentPlayer().getColor());
+			for(int i=0;i<5;i++)
+				g.drawRect(i, i, 57-2*i, 54-2*i);
+			
+		}
 	}
 	public void update(Room r){
 		//met à jour l'affichage du nombre d'unité, la couleur des pions et du type de salle
+		posX = r.getPosX();
+		posY = r.getPosY();
 		nbUnits = r.getNbUnits();
-		if(r.getNbUnits()==0){
-			pawnColor= Color.BLACK;
-		}
-		else
-		{
-			pawnColor= r.getOwner().getColor();
-		}
+		pawnColor= r.getOwner().getColor();
+
 		
 		type = r.getRoomType().getLabel();
 		//associe à chaque type de salle une couleur
@@ -137,9 +131,5 @@ public class RoomPanel extends JPanel {
 	}
 	public String toString(){
 		return "RoomPanel";
-	}
-	public GameController getGC(){
-		return gc;
-		
 	}
 }

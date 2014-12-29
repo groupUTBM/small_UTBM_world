@@ -16,13 +16,10 @@ public class MapPanel extends JPanel {
 	private ArrayList<RoomPanel> roomsPans;
 	private GridLayout gl = new GridLayout(10,10);
 	private int i;
-	private GameController gc;
-	
-	public MapPanel(GameController g){
+	public MapPanel(){
 		//instantiation
 		roomsPans = new ArrayList<RoomPanel>();
 		gl = new GridLayout(10,10);
-		this.gc=g;
 		//GUI
 		this.setMinimumSize(new Dimension(600,600));
 		this.setBackground(Color.red);
@@ -30,20 +27,20 @@ public class MapPanel extends JPanel {
 		gl.setHgap(2);
 		gl.setVgap(2);
 		for(i=0; i< 100 ; i++){
-			roomsPans.add(new RoomPanel(i%10, i/10,gc));
+			roomsPans.add(new RoomPanel(i%10, i/10));
 			add(roomsPans.get(i));
 		}
-		
+	
 	}
 	public RoomPanel getRoomPan(int x, int y){
 		
 		return roomsPans.get(y*10 + x);
 	}
-	public void addRoomListeners(GameController gamec){
+	public void addRoomListeners(GameController gc){
 		//permet l'ajout externe des listeners de chaque salle
 		for(i=0; i< 100 ; i++){
-			roomsPans.get(i).addRoomPanelListener(new RoomPanelListener(gamec.getGame().getMap().getRoom(i%10, i/10)
-					, getRoomPan(i%10,i/10), gamec));
+			roomsPans.get(i).addRoomPanelListener(new RoomPanelListener(gc.getGame().getMap().getRoom(i%10, i/10)
+					, getRoomPan(i%10,i/10), gc));
 			add(roomsPans.get(i));
 		}
 	}

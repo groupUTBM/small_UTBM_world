@@ -62,8 +62,7 @@ public class GamePanel extends JPanel {
 	private void instantiations(ArrayList<Player> players){
 		mec = new MouseEffectComponent();
 		gpl = new GamePanelListener(mec);
-		mapPnl = new MapPanel(gc);
-		
+		mapPnl = new MapPanel();
 		
 		gbc = new GridBagConstraints();
 		gbl = new GridBagLayout();

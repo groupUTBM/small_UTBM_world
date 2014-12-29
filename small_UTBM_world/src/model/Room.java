@@ -21,6 +21,7 @@ public class Room {
 			isBorder=true;
 		this.rp = rp;
 		pawns = new ArrayList<Pawn>();
+		NullPlayerSingleton.getInstance().getNullPlayer().becomeOwner(this);
 		
 		i=(int)(Math.random()*10);
 		switch(i){
@@ -60,17 +61,13 @@ public class Room {
 	public int getNbUnits() {
 		return nbUnits;
 	}
-	public void setNbUnits(int nbUnits) {
-		this.nbUnits = nbUnits;
-		rp.update(this);
-	}
 	
 	public Pawn getTopPawn(){
 		return pawns.get(nbUnits-1);
 	}
 	public void addPawn(Pawn p){
 		if(pawns.isEmpty()){
-			owner= p.getOwner();
+			p.getOwner().becomeOwner(this);
 			System.out.println(owner.getName());
 		}
 		pawns.add(p);
@@ -82,12 +79,23 @@ public class Room {
 			Pawn p = pawns.get(nbUnits-1);
 			pawns.remove(nbUnits-1);
 			nbUnits--;
+			if(nbUnits == 0){
+				owner.abandonRoom(this);
+			}
 			rp.update(this);
 			return p;
 		}
 		else
 			return null;
 		
+	}
+	public void returnPawns(){
+		while(nbUnits > 1)
+			owner.takePawn(this);
+		pawns.remove(0);
+		nbUnits = 0;
+		owner.abandonRoom(this);
+		rp.update(this);
 	}
 	public RoomPanel getRoomPanel(){
 		return rp;
@@ -105,7 +113,7 @@ public class Room {
 		return posY;
 	}
 	public boolean isAdjacent(Room r){
-		if(Math.abs(r.getPosX()-this.getPosY()) <= 1
+		if(Math.abs(r.getPosX()-this.getPosX()) <= 1
 			&& Math.abs(r.getPosY()-this.getPosY()) <= 1){
 			return true;
 		}
@@ -115,7 +123,11 @@ public class Room {
 	public boolean isBorder(){
 		return isBorder;
 	}
+	
 	public void setRoomType(RoomType r){
 		rt = r;
+	}
+	public void setOwner(Player newOwner){
+		owner=newOwner;
 	}
 }

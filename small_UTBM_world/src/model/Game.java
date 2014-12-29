@@ -63,7 +63,7 @@ public class Game {
 		currentPlayer.setMec(gamePan.getMec());
 		gamePan.getNextTurnButton().showRedeployment();
 		
-		System.out.println(currentPlayer.getName());
+		System.out.println("new turn : "+currentPlayer.getName());
 	}
 	public void startRedeployment (){
 		conquest=false;

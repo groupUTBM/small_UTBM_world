@@ -80,5 +80,7 @@ public class RoomPanelListener implements MouseListener, MouseMotionListener {
 		gp.dispatchEvent(e);
 //		System.out.println("ok");
 	}
-
+	public GameController getGC(){
+		return gc;
+	}
 }

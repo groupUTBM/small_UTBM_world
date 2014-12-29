@@ -16,12 +16,9 @@ public class GameController {
 	public void clickOnRoom(Room r){
 		if(!game.conquestPhase())//si le joueur est dans la phase de redéploiement
 		{
-			if(game.getCurrentPlayer().isOwner(r)){
+			if(game.getCurrentPlayer() == r.getOwner()){
 				if(r.getNbUnits()>=1){
 					game.getCurrentPlayer().takePawn(r);
-					if(r.getNbUnits() == 0){
-						game.getCurrentPlayer().abandonRoom(r);
-					}
 				}
 			}
 		}
@@ -33,7 +30,7 @@ public class GameController {
 		}
 		else
 		{
-			if(game.getCurrentPlayer().isOwner(r)){
+			if(game.getCurrentPlayer() == r.getOwner()){
 			game.getCurrentPlayer().putPawn(r);
 			}
 		}
