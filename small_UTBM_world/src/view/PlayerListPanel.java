@@ -27,6 +27,11 @@ public class PlayerListPanel extends JPanel {
 		this.setBackground(Color.white);
 		this.setLayout(new GridLayout(6, 1, 5, 5));
 	}
+	public void update(ArrayList<Player> players){
+		for(int i=0;i<players.size();i++){
+			playerPnls.get(i).update(players.get(i));
+		}
+	}
 
 }
 

@@ -49,6 +49,7 @@ public class Game {
 	
 	
 	public void nextTurn(){
+		currentPlayer.setVictoryPt(currentPlayer.getVictoryPt()+currentPlayer.computePoints());
 		if(nbCurrPlayer < nbPlayers-1){
 			currentPlayer=players.get(nbCurrPlayer+1);
 			nbCurrPlayer++;
@@ -62,7 +63,7 @@ public class Game {
 		conquest=true;
 		currentPlayer.setMec(gamePan.getMec());
 		gamePan.getNextTurnButton().showRedeployment();
-		
+		gamePan.getPlayerListPanel().update(players);
 		System.out.println("new turn : "+currentPlayer.getName());
 	}
 	public void startRedeployment (){

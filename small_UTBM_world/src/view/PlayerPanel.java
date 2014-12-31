@@ -28,8 +28,8 @@ public class PlayerPanel extends JPanel
 		
 		Font police = new Font("Arial", Font.BOLD, 12);
 		ecranNom = new JLabel(p.getName());
-	    ecranPeuple = new JLabel("placeholder");
-	    ecranPoint = new JLabel("0");
+	    ecranPeuple = new JLabel(p.getDepartment().get_name());
+	    ecranPoint = new JLabel(Integer.toString(p.getVictoryPt()));
 	    panNom = new JLabel("NOM :");
 		panPeuple = new JLabel("Peuple + Pouvoir");
 		panPoint = new JLabel("POINT :");
@@ -68,5 +68,9 @@ public class PlayerPanel extends JPanel
 	public void setPoint(int pt)
 	{
 		ecranPoint.setText(Double.toString(pt));
+	}
+	public void update(Player p){
+		ecranPoint.setText(Integer.toString(p.getVictoryPt()));
+		ecranPeuple.setText(p.getDepartment().get_name());
 	}
 }

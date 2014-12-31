@@ -126,6 +126,7 @@ public class Room {
 	
 	public void setRoomType(RoomType r){
 		rt = r;
+		rp.update(this);
 	}
 	public void setOwner(Player newOwner){
 		owner=newOwner;

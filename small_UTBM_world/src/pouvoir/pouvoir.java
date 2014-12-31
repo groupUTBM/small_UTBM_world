@@ -2,7 +2,7 @@ package pouvoir;
 
 import model.RoomType;
 import model.Room;
-public abstract class pouvoir {
+public abstract class Pouvoir {
 	protected int peoplecarry;
 	protected String name;
 	protected String description;
@@ -10,7 +10,7 @@ abstract public  int bonusattack(RoomType r);
 abstract public   int bonusdefense(RoomType r);
 abstract public   int peoplecarry(RoomType r);
 abstract public int gainbonus(RoomType r);
-pouvoir()
+Pouvoir()
 {
 		name="";
 		description="";

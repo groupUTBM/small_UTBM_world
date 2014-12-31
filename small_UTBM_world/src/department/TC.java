@@ -5,7 +5,7 @@ public class TC extends Department{
 public TC()
 {
 		super();
-		this.setname("Tout Branche");
+		this.setname("Tronc Commun");
 }
 public String get_description()
 {
@@ -13,6 +13,6 @@ public String get_description()
 }
 public  int attack(int numunite, RoomType r)
 {
-		return numunite*1;
+		return 1;
 }
 }

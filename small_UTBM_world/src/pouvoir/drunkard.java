@@ -2,8 +2,8 @@ package pouvoir;
 
 import model.RoomType;
 
-public class drunkard extends pouvoir {
-	drunkard()                                   //constructeur
+public class Drunkard extends Pouvoir {
+public Drunkard()                                   //constructeur
 {
 		this.setname("drunkard");
 	    this.setdescription("beer,one more beer!");

@@ -1,7 +1,7 @@
 package pouvoir;
 import model.RoomType;
-public class geek extends pouvoir {
-geek(){
+public class Geek extends Pouvoir {
+Geek(){
 	    this.setname("geek");
         this.setdescription("we are crzay in computer");
 }

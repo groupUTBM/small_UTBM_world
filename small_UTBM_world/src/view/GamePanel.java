@@ -19,6 +19,7 @@ import model.Game;
 import model.Player;
 import controller.GameController;
 import controller.GamePanelListener;
+import controller.NextTurnBtnListener;
 
 public class GamePanel extends JPanel {
 
@@ -58,6 +59,9 @@ public class GamePanel extends JPanel {
 	public NextTurnButton getNextTurnButton(){
 		return nextTurnBtn;
 	}
+	public PlayerListPanel getPlayerListPanel(){
+		return playerLstPnl;
+	}
 	//Fonctions à usage interne
 	private void instantiations(ArrayList<Player> players){
 		mec = new MouseEffectComponent();
@@ -74,6 +78,8 @@ public class GamePanel extends JPanel {
 		playerLstPnl = new PlayerListPanel(players);
 		nextTurnBtn = new NextTurnButton(gc);
 		containerPan = new JPanel();
+		
+		nextTurnBtn.addMouseMotionListener(new NextTurnBtnListener(this));
 	}
 	private void configurationGUI(){
 		setPreferredSize(new Dimension(800,600));

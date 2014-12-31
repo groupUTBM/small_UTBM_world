@@ -24,7 +24,7 @@ public class GamePanelListener implements MouseMotionListener, MouseListener {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		if((e.getSource().toString() == "RoomPanel")){
+		if(e.getSource().toString() == "rp" || e.getSource().toString() == "ntb"){
 			mec.update(e.getXOnScreen()-mec.getLocationOnScreen().x
 					,e.getYOnScreen()-mec.getLocationOnScreen().y);
 		}

@@ -130,6 +130,6 @@ public class RoomPanel extends JPanel {
 		repaint();
 	}
 	public String toString(){
-		return "RoomPanel";
+		return "rp";
 	}
 }

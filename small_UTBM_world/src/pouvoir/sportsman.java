@@ -2,8 +2,8 @@ package pouvoir;
 
 import model.RoomType;
 
-public class sportsman extends pouvoir {
-sportsman()
+public class Sportsman extends Pouvoir {
+Sportsman()
 {
 	    this.setname("sportsman");
         this.setdescription("Faster,Higher,Stronger!");

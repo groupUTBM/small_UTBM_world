@@ -2,34 +2,42 @@ package model;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import pouvoir.Pouvoir;
+import pouvoir.Drunkard;
 import view.MouseEffectComponent;
 import department.Department;
+import department.TC;
 import department.Utseus;
 
 
 public class Player  {
    private String name;
-   private Department depa;
+   private Department dep;
+   private Pouvoir pouv;
    private ArrayList<Room> rooms;
    private int nbRooms;
    private ArrayList<Pawn> pawnsInHand;
-   private int nbPawnsInHand=100;
+   private int nbPawnsInHand;
    private int i;
+   private int victoryPt;
    private MouseEffectComponent mec;
    private Color color;
    
-   public void setdepartment(Department d){
-	  depa=d;
-   }
+   
    public Player(String s){
+	   nbPawnsInHand=50;
+	   victoryPt=0;
 	   name=s;
-	   depa=new Utseus();
+	   dep=new Utseus();
 	   rooms= new ArrayList<Room>();
 	   pawnsInHand = new ArrayList<Pawn>();
 	   for(i=0;i<nbPawnsInHand;i++){
 		   pawnsInHand.add(new Pawn(null,this));
 	   }
 	   color =  new Color(0,0,0);
+	   
+	   dep = new TC();
+	   pouv = new Drunkard();
    }
    
    public void declin(){
@@ -89,8 +97,13 @@ public class Player  {
 				   }
 			   }
 			   else if(r.getOwner() != this){
-				   int nbNeeded = 2+r.getNbUnits();//rajouter le calcul du bonus ici
-				   
+				   int nbNeeded = 2+r.getNbUnits()
+						   +r.getOwner().getPouvoir().bonusdefense(r.getRoomType())
+						   -pouv.bonusattack(r.getRoomType())
+						   -dep.attack(nbPawnsInHand, r.getRoomType());//rajouter le calcul du bonus ici
+				   if(nbNeeded < 0){
+					   nbNeeded=0;
+				   }
 				   if(nbPawnsInHand >= nbNeeded){
 					   r.returnPawns();
 					   for(i=0 ; i<nbNeeded;i++){
@@ -110,9 +123,35 @@ public class Player  {
 	   mec.updateNb(nbPawnsInHand);
 	   mec.setColor(color);
    }
-   
+   public void setdepartment(Department d){
+	   if(dep!=null)
+		  dep=d;
+   }
+   public Department getDepartment(){
+	   return dep;
+   }
+   public void setPouvoir(Pouvoir p){
+	   if(p!=null)
+		   pouv=p;
+   }
+   public Pouvoir getPouvoir(){
+	   return pouv;
+   }
    public String getName(){
 	   return name;
+   }
+   public int getVictoryPt(){
+	   return victoryPt;
+   }
+   public void setVictoryPt(int points){
+	   victoryPt=points;
+   }
+   public int computePoints(){
+	   int points=0;
+	   for(int i=0;i<nbRooms;i++){
+		   points+=1+pouv.gainbonus(rooms.get(i).getRoomType());
+	   }
+	   return points;
    }
    public void setColor(Color c){
 	   color=c;
