@@ -3,7 +3,7 @@ import model.Room;
 import model.RoomType;
 
 public class Traveller extends Pouvoir {
-Traveller()
+public Traveller()
 {
 		this.setname("traveller");
 	    this.setdescription("we can go anywhere");

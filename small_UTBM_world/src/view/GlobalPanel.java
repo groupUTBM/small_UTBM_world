@@ -2,6 +2,8 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -13,6 +15,8 @@ public class GlobalPanel extends JPanel {
 	private WelcomePanel welcomePan;
 	private ChooseNbPlayer cnbPan;
 	private EnterNamePlayer enpPan;
+	private Combination combPan;
+	
 	
 	private CardLayout cl;
 	
@@ -22,6 +26,8 @@ public class GlobalPanel extends JPanel {
 		cl = new CardLayout();
 		welcomePan=new WelcomePanel(this);
 		enpPan = new EnterNamePlayer(this);
+		
+		
 		//GUI
 		setLayout(cl);
 		testPan.setBackground(Color.pink);
@@ -30,9 +36,12 @@ public class GlobalPanel extends JPanel {
 		add(enpPan,"enterNamePan");
 		
 		
+		
+		
 		cl.show(this, "welcomePan");
 		
 	}
+	
 	//getters
 	public GamePanel getGamePanel(){
 		return gamePan;
@@ -43,7 +52,10 @@ public class GlobalPanel extends JPanel {
 	public EnterNamePlayer getEnp(){
 		return enpPan;
 	}
-	//fonctions permettant de changer le panel affiché
+	public Combination getComb(){
+		return combPan;
+	}
+	//fonctions permettant de changer le panel affich?
 	public void showGamePan(){
 		gamePan = new GamePanel(enpPan.getListPlayers());
 		add(gamePan,"gamePan");
@@ -57,4 +69,19 @@ public class GlobalPanel extends JPanel {
 	public void showEnterNamePan(){		
 		cl.show(this, "enterNamePan");
 	}
+	public void showCombinationPan() {
+		combPan = new Combination(this);
+		add(combPan,"combinationPan");
+		cl.show(this,"combinationPan");
+	}
+
+	public void showWelcomePan() {
+		// TODO Auto-generated method stub
+		cl.show(this,"welcomePan");
+	}
+
+	
+
+
+
 }

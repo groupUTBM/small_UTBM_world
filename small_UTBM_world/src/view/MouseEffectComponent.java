@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JComponent;
-//Panel utilisé pour afficher le nombre d'unité disponible à côté du curseur
+//Panel utilis? pour afficher le nombre d'unit? disponible ? c?t? du curseur
 public class MouseEffectComponent extends JComponent{
 	private static final long serialVersionUID = -7199224691108588641L;
 	

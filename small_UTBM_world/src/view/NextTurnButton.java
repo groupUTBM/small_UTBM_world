@@ -16,7 +16,7 @@ public class NextTurnButton extends JButton{
 		
 		this.gc=g;
 		
-		setText("redéploiement");
+		setText("red?ploiement");
 		setMaximumSize(new Dimension(100,200));
 		
 		addActionListener(new ActionListener() {
@@ -33,7 +33,7 @@ public class NextTurnButton extends JButton{
 		setText("tour suivant");
 	}
 	public void showRedeployment(){
-		setText("redéploiement");
+		setText("red?ploiement");
 	}
 	public String toString(){
 		return "ntb";

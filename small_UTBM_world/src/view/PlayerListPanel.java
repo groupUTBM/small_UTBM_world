@@ -17,7 +17,7 @@ public class PlayerListPanel extends JPanel {
 		
 		playerPnls = new ArrayList<PlayerPanel>();
 		
-		//création d'un PlayerPanel pour chaque player
+		//cr?ation d'un PlayerPanel pour chaque player
 		for(int i=0;i<players.size();i++){
 			playerPnls.add(new PlayerPanel(players.get(i)));
 			add(playerPnls.get(i));

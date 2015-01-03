@@ -62,7 +62,7 @@ public class GamePanel extends JPanel {
 	public PlayerListPanel getPlayerListPanel(){
 		return playerLstPnl;
 	}
-	//Fonctions à usage interne
+	//Fonctions ? usage interne
 	private void instantiations(ArrayList<Player> players){
 		mec = new MouseEffectComponent();
 		gpl = new GamePanelListener(mec);

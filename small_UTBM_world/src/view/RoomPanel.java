@@ -64,7 +64,7 @@ public class RoomPanel extends JPanel {
 	public void paintComponent(Graphics g){
 		//comme on veut garder l'affichage des fonds
 		super.paintComponent(g);
-		//affichage du nombre d'unité
+		//affichage du nombre d'unit?
 		g.setColor(new Color(255-(int)(color.getRed()*0.8), 255-(int)(color.getGreen()*0.8), 255-(int)(color.getBlue()*0.8)));
 		g.drawString(Integer.toString(nbUnits)+" "+posX+" "+posY, 0, 10);
 		//affichage du type de salle
@@ -84,7 +84,7 @@ public class RoomPanel extends JPanel {
 		}
 	}
 	public void update(Room r){
-		//met à jour l'affichage du nombre d'unité, la couleur des pions et du type de salle
+		//met ? jour l'affichage du nombre d'unit?, la couleur des pions et du type de salle
 		posX = r.getPosX();
 		posY = r.getPosY();
 		nbUnits = r.getNbUnits();
@@ -92,7 +92,7 @@ public class RoomPanel extends JPanel {
 
 		
 		type = r.getRoomType().getLabel();
-		//associe à chaque type de salle une couleur
+		//associe ? chaque type de salle une couleur
 		switch(r.getRoomType()){
 		case BAR :
 			color = Colors.getBarColor();

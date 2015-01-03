@@ -3,7 +3,7 @@ package pouvoir;
 import model.RoomType;
 
 public class Professor extends Pouvoir{
-Professor()
+public Professor()
 {
         this.setname("professor");
 	    this.setdescription("class begin!");

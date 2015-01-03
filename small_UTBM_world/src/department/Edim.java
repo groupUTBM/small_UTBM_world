@@ -7,6 +7,7 @@ public Edim()
 {
 	    super();
 		this.setname("EDIM");
+		
 }
 public String get_description()
 {

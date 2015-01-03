@@ -2,7 +2,7 @@ package pouvoir;
 import model.RoomType;
 
 public class Sleepyhead extends Pouvoir {
-Sleepyhead()
+public Sleepyhead()
 {
 		this.setname("sleephead");
 	    this.setdescription("I just want to sleep");

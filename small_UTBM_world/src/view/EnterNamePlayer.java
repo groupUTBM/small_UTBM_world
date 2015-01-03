@@ -3,7 +3,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,9 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Player;
-import controller.GameButtonListener;
+import controller.BackButtonListener;
+import controller.CombinationButtonListener;
 import controller.StartButtonListener;
-/*Panel permettant à l'utilisateur d'ajouter des joueurs tout en 
+/*Panel permettant ? l'utilisateur d'ajouter des joueurs tout en 
 indiquant leur nom.*/
 public class EnterNamePlayer extends JPanel {
 
@@ -33,15 +33,15 @@ public class EnterNamePlayer extends JPanel {
 	private JButton valid;
 	private JButton start;
 	private JButton back;
-	private GameButtonListener gbl;
-	private StartButtonListener sbl;
+	private CombinationButtonListener cbl;
+	private BackButtonListener bbl;
 
 	//constructeur
 	public EnterNamePlayer(GlobalPanel gp){
 		instantiations(gp);
 		configurationGUI();
 	}
-	// fonction permettant de réinitialiser quand on clique sur "Retour"
+	// fonction permettant de r?initialiser quand on clique sur "Retour"
 	public void init(int nb){
 		nbPlayers = nb;
 		System.out.println(nb);
@@ -66,7 +66,7 @@ public class EnterNamePlayer extends JPanel {
 	public int getCurrNbPlayer(){
 		return i;
 	}
-	//Fonctions à usage interne
+	//Fonctions ? usage interne
 	private void instantiations(GlobalPanel gp){
 		title = new JLabel();
 		condition = new JLabel();
@@ -74,10 +74,10 @@ public class EnterNamePlayer extends JPanel {
 		players = new ArrayList<Player>();
 		enter  = new JTextField(20);
 		valid = new JButton("+");
-		start = new JButton("Commencer");
+		start = new JButton("Suivant");
 		back = new JButton("Retour");
-		gbl = new GameButtonListener(gp);
-		sbl = new StartButtonListener(gp);
+		cbl = new CombinationButtonListener(gp);
+		bbl = new BackButtonListener(gp);
 		nbPlayers = 6;
 	}
 	private void configurationGUI(){
@@ -165,7 +165,7 @@ public class EnterNamePlayer extends JPanel {
 		add(affiche);
 		add(jpButton);
 		
-		start.addMouseListener(gbl);
-		back.addMouseListener(sbl);
+		start.addMouseListener(cbl);
+		back.addMouseListener(bbl);
 	}
 }

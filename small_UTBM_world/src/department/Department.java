@@ -7,6 +7,7 @@ public abstract class Department {
 protected int nbPawn;
 protected String name;
 protected String description;
+
 		
 public Department()
 {
@@ -24,6 +25,7 @@ public void setname(String n)
 {
 		this.name=n;
 }
+
 public int get_numunite()
 {
 			

@@ -28,7 +28,7 @@ public class WelcomePanel extends JPanel {
 	   
 	}
 	
-	//Fonctions à usage interne
+	//Fonctions ? usage interne
 	private void instantiations(GlobalPanel gp){
 		title = new JLabel();
 		commencer = new JButton("Commencer");

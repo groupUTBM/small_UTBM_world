@@ -5,7 +5,7 @@ import model.Room;
 
 public class Messy extends Pouvoir {
 	private int n=2;
-	Messy()                                   //constructeur
+	public Messy()                                   //constructeur
 {
 		this.setname("transformer");
 	    this.setdescription("I don't like this room,let's change it");

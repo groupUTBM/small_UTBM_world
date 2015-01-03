@@ -3,9 +3,9 @@ package pouvoir;
 import model.RoomType;
 import model.Room;
 
-public class transformer extends pouvoir {
+public class Transformer extends Pouvoir {
 	private int n=2;
-	transformer()                                   //constructeur
+	public Transformer()                                   //constructeur
 {
 		this.setname("transformer");
 	    this.setdescription("I don't like this room,let's change it");
