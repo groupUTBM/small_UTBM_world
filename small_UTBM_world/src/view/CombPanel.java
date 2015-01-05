@@ -25,10 +25,14 @@ public class CombPanel extends JPanel{
 	private JLabel ecranDepDes;
 	private JLabel ecranPou;
 	private JLabel ecranPouDes;
+	private Department dep;
+	private Pouvoir pou;
 	private JPanel c1 = new JPanel();
 	private JPanel c2 = new JPanel();
 	
 	public CombPanel(Department dep,Pouvoir pou){
+		this.dep = dep;
+		this.pou = pou;
 		panDep = new JLabel("DEPARTMENT:  ");
 		panDepDes = new JLabel("DESCRIPTION:  ");
 		panPou = new JLabel("POUVOIR:  ");
@@ -126,5 +130,12 @@ public class CombPanel extends JPanel{
 		
 		
 	}
+	
+	public Department getDep() {
+		return dep;
+	}
 
+	public Pouvoir getPou() {
+		return pou;
+	}
 }

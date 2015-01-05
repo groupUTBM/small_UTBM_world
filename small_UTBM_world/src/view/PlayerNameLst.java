@@ -35,5 +35,9 @@ public class PlayerNameLst extends JPanel {
 			playerNames.get(i).update(players.get(i));
 		}
 	}
+	
+	public PlayerName getPlayerName(int i){
+		return playerNames.get(i);
+	}
 
 }

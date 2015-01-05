@@ -57,7 +57,7 @@ public class GlobalPanel extends JPanel {
 	}
 	//fonctions permettant de changer le panel affich?
 	public void showGamePan(){
-		gamePan = new GamePanel(enpPan.getListPlayers());
+		gamePan = new GamePanel(combPan.getListePlayers());
 		add(gamePan,"gamePan");
 		cl.show(this, "gamePan");
 	}
@@ -79,6 +79,8 @@ public class GlobalPanel extends JPanel {
 		// TODO Auto-generated method stub
 		cl.show(this,"welcomePan");
 	}
+	
+	
 
 	
 

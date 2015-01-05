@@ -27,7 +27,7 @@ public class PlayerName extends JPanel{
 		
 		Font police = new Font("Arial", Font.BOLD, 12);
 		ecranNom = new JLabel(p.getName());
-	    ecranPeuple = new JLabel(p.getDepartment().get_name());
+	    ecranPeuple = new JLabel();
 	    panNom = new JLabel("NOM :");
 		panPeuple = new JLabel("Peuple + Pouvoir");
 	    
