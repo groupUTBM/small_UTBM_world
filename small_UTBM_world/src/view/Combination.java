@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,7 @@ import pouvoir.Sportsman;
 import pouvoir.Transformer;
 import pouvoir.Traveller;
 import model.Player;
+
 import controller.CombinationButtonListener;
 import controller.GameButtonListener;
 import controller.StartButtonListener;
@@ -50,26 +52,32 @@ public class Combination extends JPanel{
 	private JLabel title = new JLabel();
 	private JLabel c1;
 	private JButton start = new JButton();
-	private PlayerListPanel playerLstPnl;
-	private JRadioButton n1, n2, n3, n4, n5, n6;
-	private ButtonGroup groupe = new ButtonGroup();
+	private JPanel container = new JPanel();
+	private JPanel choosePan = new JPanel();
 	private JPanel playerPan = new JPanel();
+	private PlayerNameLst playerNameLstPnl;
+	private ArrayList<PlayerName> playerNames = new ArrayList<PlayerName>();
+	private JRadioButton n1, n2, n3, n4, n5, n6, n7, n8;
+	private ButtonGroup groupe = new ButtonGroup();
+	
 	private ArrayList<Department> peuples = new ArrayList<Department>();
 	private ArrayList<Pouvoir> pouvoirs = new ArrayList<Pouvoir>();
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private ArrayList<CombPanel> combPanels;
 	private GameButtonListener gbl;
+	private GridBagConstraints gbc;
+
 	
-	public Combination(GlobalPanel gp){
+	public Combination(GlobalPanel gp,ArrayList<Player> players){
 		
 	
 		title = new JLabel();
 		start = new JButton("Commencer");
 		gbl = new GameButtonListener(gp);
-		
+		playerNameLstPnl = new PlayerNameLst(players);
 	
 		
-		setLayout(new FlowLayout(FlowLayout.CENTER,600,70));
+		setLayout(new FlowLayout(FlowLayout.CENTER,600,30));
 		title.setText("CHOISIR VOTRES PEUPLES ET POUVOIRS!");
 		title.setForeground(Color.white);
 		title.setFont(new java.awt.Font("Dialog", 1, 20));
@@ -106,34 +114,32 @@ public class Combination extends JPanel{
 		pouvoirs.add(transformer);
 		pouvoirs.add(traveller);
 		
-		
-		
-//		for(int i=0;i<6;i++){
-//			Random rand = new Random();
-//			int numPou = rand.nextInt(6); 
-//			int numPeu = rand.nextInt(7);
-//		
-//			System.out.println(peuples.get(numPeu).get_description());
-//			System.out.println(pouvoirs.get(numPou).getdescription());
-//		}
-		combPanels = new ArrayList<CombPanel>();
-		for(int i=0;i<8;i++){
-			Random rand = new Random();
-			int numPou = rand.nextInt(6); 
-			int numPeu = rand.nextInt(7);
-			combPanels.add(new CombPanel(peuples.get(numPeu),pouvoirs.get(numPou)));
-			add(combPanels.get(i));
-		}
+		playerPan.add(playerNameLstPnl);
+		playerPan.setBackground(Color.BLACK);
 		
 		JPanel jpRadioButtons = new JPanel();
 		jpRadioButtons.setBackground(Color.black);
-		jpRadioButtons.setLayout(new GridLayout(3,2));
-		jpRadioButtons.add(n1 = new JRadioButton("  combination 1  "));
-		jpRadioButtons.add(n2 = new JRadioButton("  combination 2  "));
-		jpRadioButtons.add(n3 = new JRadioButton("  combination 3  "));
-		jpRadioButtons.add(n4 = new JRadioButton("  combination 4  "));
-		jpRadioButtons.add(n5 = new JRadioButton("  combination 5  "));
-		jpRadioButtons.add(n6 = new JRadioButton("  combination 6  "));
+		jpRadioButtons.setLayout(new GridLayout(4,2));
+		
+		combPanels = new ArrayList<CombPanel>();
+		for(int i=0;i<8;i++){
+			Random rand = new Random();
+			int numPou = rand.nextInt(5); 
+			int numPeu = rand.nextInt(6);
+			combPanels.add(new CombPanel(peuples.get(numPeu),pouvoirs.get(numPou)));
+			choosePan.setLayout(new GridLayout(4,2));
+			choosePan.add(combPanels.get(i));
+			
+		}
+		
+		jpRadioButtons.add(n1 = new JRadioButton("CHOIX 1"));
+		jpRadioButtons.add(n2 = new JRadioButton("CHOIX 2"));
+		jpRadioButtons.add(n3 = new JRadioButton("CHOIX 3"));
+		jpRadioButtons.add(n4 = new JRadioButton("CHOIX 4"));
+		jpRadioButtons.add(n5 = new JRadioButton("CHOIX 5"));
+		jpRadioButtons.add(n6 = new JRadioButton("CHOIX 6"));
+		jpRadioButtons.add(n7 = new JRadioButton("CHOIX 7"));
+		jpRadioButtons.add(n8 = new JRadioButton("CHOIX 8"));
 		
 		groupe.add(n1);
 		groupe.add(n2);
@@ -141,6 +147,8 @@ public class Combination extends JPanel{
 		groupe.add(n4);
 		groupe.add(n5);
 		groupe.add(n6);
+		groupe.add(n7);
+		groupe.add(n8);
 		
 		n1.setBackground(Color.black);
 		n2.setBackground(Color.black);
@@ -148,6 +156,8 @@ public class Combination extends JPanel{
 		n4.setBackground(Color.black);
 		n5.setBackground(Color.black);
 		n6.setBackground(Color.black);
+		n7.setBackground(Color.black);
+		n8.setBackground(Color.black);
 		
 		n1.setForeground(Color.white);
 		n2.setForeground(Color.white);
@@ -155,27 +165,64 @@ public class Combination extends JPanel{
 		n4.setForeground(Color.white);
 		n5.setForeground(Color.white);
 		n6.setForeground(Color.white);
+		n7.setForeground(Color.white);
+		n8.setForeground(Color.white);
 		
 		n1.setSelected(true);
 		
-		
-		
-		
-
-		
-
 		setBackground(Color.black);
 		add(title);
-		add(jpRadioButtons);
-		add(start);
 		
-	   
+		gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.weightx = 0;
+		gbc.gridx=0;
+		gbc.gridheight=2;
+		container.add(choosePan,gbc);
+		gbc.gridheight  = 1;
+		gbc.gridx=GridBagConstraints.RELATIVE;
+		container.add(jpRadioButtons,gbc);
+		gbc.gridx = 1;
+		gbc.gridy = GridBagConstraints.RELATIVE;
+		container.add(playerPan,gbc);
+		
+		container.setBackground(Color.black);
+		
+		
+		
+//		add(playerPan);
+		add(container);
+//		add(jpRadioButtons);
+		add(start);
 		setVisible(true);
-
 		
 		start.addMouseListener(gbl);
 		start.setVisible(true);
 	}
+	
+	public int getNumCombination(){
+		if(n1.isSelected() )
+			return 1;
+		else if ( n2.isSelected() )
+			return 2;
+		else if ( n3.isSelected() )
+			return 3;
+		else if ( n4.isSelected() )
+			return 4;
+		else if ( n5.isSelected() )
+			return 5;
+		else if ( n6.isSelected() )
+			return 6;
+		else if ( n7.isSelected() )
+			return 7;
+		else if ( n8.isSelected() )
+			return 8;
+		
+		return 1;
+	}
+	
+	
+
 	
 
 	

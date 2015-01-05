@@ -38,6 +38,7 @@ public class Player  {
 	   
 	   dep = new TC();
 	   pouv = new Drunkard();
+	   
    }
    
    public void declin(){
@@ -159,7 +160,7 @@ public class Player  {
    public Color getColor(){
 	   return color;
    }
-   //Fonctions à usage interne
+   //Fonctions  d'usage interne
    private boolean canConquer(Room r){
 	   System.out.println("can has?");
 	   boolean conquerable = false;

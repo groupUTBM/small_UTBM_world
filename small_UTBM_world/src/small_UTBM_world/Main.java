@@ -4,6 +4,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import view.GlobalPanel;
 import model.Game;
@@ -23,7 +24,8 @@ public class Main {
 		
 		frame.setLocationRelativeTo(null);
 		frame.setContentPane(globalPnl);
-		frame.setResizable(false);
+		frame.setResizable(true);
+		
 		
 //		globalPnl.add(gamePnl);
 		
