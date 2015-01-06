@@ -85,6 +85,7 @@ public final class Colors {
 	private static Color dormColor = new Color(205,201,201);
 	private static Color computerColor = new Color(151,255,255);
 	private static Color grassColor = new Color(202,255,112);
+	private static Color messColor = new Color(139,37,0);
 	
 	private Colors(){
 	
@@ -96,5 +97,13 @@ public final class Colors {
 
 	public static void setGrassColor(Color grassColor) {
 		Colors.grassColor = grassColor;
+	}
+
+	public static Color getMessColor() {
+		return messColor;
+	}
+
+	public static void setMessColor(Color messColor) {
+		Colors.messColor = messColor;
 	}
 }

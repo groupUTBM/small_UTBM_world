@@ -113,6 +113,8 @@ public class RoomPanel extends JPanel {
 		case GRASS : 
 			color = Colors.getGrassColor();
 			break;
+		case MESS :
+			color = Colors.getMessColor();
 		case GYM : 
 			color = Colors.getGymColor();
 			break;
