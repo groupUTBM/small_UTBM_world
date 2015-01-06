@@ -38,7 +38,7 @@ public class CombPanel extends JPanel{
 		panPou = new JLabel("POUVOIR:  ");
 		panPouDes = new JLabel("DESCRIPTION:  ");
 		ecranDep = new JLabel("<html>"+dep.get_name()+"</html>");
-		ecranDepDes = new JLabel("<html>"+dep.get_description()+"</html>");
+		ecranDepDes = new JLabel("<html>"+dep.getDescription()+"</html>");
 		ecranPou = new JLabel("<html>"+pou.getname()+"</html>");
 		ecranPouDes = new JLabel("<html>"+pou.getdescription()+"</html>");
 		

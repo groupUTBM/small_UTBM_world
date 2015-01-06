@@ -4,59 +4,48 @@ import model.RoomType;
 import model.Room;
 
 public class Messy extends Pouvoir {
-	private int n=2;
-	public Messy()                                   //constructeur
-{
-		this.setname("transformer");
-	    this.setdescription("I don't like this room,let's change it");
-}
-public int bonusattack(RoomType r)              
-{
-	    
-	    int n;
-	    if(r==RoomType.CLEARING )
-		n=4;
-	    else n=2;
-	    return n;
-}
-public   int bonusdefense(RoomType r)          
-{
-	   
-	    int n;
-	    if(r==RoomType.CLEARING )
-		n=4;
-	    else n=2;
-	    return n;
-}
-public   int peoplecarry(RoomType r)           
-{
-	    int n;
-		if(r==RoomType.CLEARING )
-		n=4;
-		else n=2;
+	private int n = 0;
+
+	public Messy() // constructeur
+	{
+		name = "messy";
+		description = "Turn every room they conquer from another player into a mess";
+	}
+
+	public int bonusattack(Room r) {
+		if (r.getRoomType() != RoomType.MESS && n < 2) {
+			r.setRoomType(RoomType.MESS);
+			n++;
+		}
+		return 2;
+	}
+
+	public int bonusdefense(Room r) {
+
+		int n;
+		if (r.getRoomType() == RoomType.MESS)
+			n = 3;
+		else
+			n = 2;
 		return n;
-}
-public int gainbonus(RoomType r)      //si ce pion reste dans ce room,chaque tour il va gagner des bonus 
-{
-	    if(r==RoomType.CLEARING )
-		return 40;
-	    else
-		return 20;
-}
-public int getn()
-{
-	    return n;
-}
-public void setn(int a)
-{
-	    this.n=a;
-}
-public void changeroomtype(Room r)      //il peut changer le type de room,mais seulment 2 fois
-{
-	    if(this.getn()>0)
-{
-	    r.setRoomType(RoomType.CLEARING);
-	    this.setn(n-1);
-}
-}
+	}
+
+	public int peoplecarry(Room r) {
+		int n;
+		if (r.getRoomType() == RoomType.MESS)
+			n = 2;
+		else
+			n = 2;
+		return n;
+	}
+
+	public int gainbonus(Room r) // si ce pion reste dans ce room,chaque tour il
+									// va gagner des bonus
+	{
+		if (r.getRoomType() == RoomType.MESS)
+			return 4;
+		else
+			return 2;
+	}
+
 }

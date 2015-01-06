@@ -1,51 +1,55 @@
 package pouvoir;
 
+import model.Room;
 import model.RoomType;
 
-public class Professor extends Pouvoir{
-public Professor()
-{
-        this.setname("professor");
-	    this.setdescription("class begin!");
-}
-public int bonusattack(RoomType r)
-{
-	    int n = 0;
-	    if(r==RoomType.CLASSROOM)
-	    n=3;
-	    if(r==RoomType.TPROOM)
-	    n=2;
-	    else if(r==RoomType.TDROOM)
-	    n=2;
+public class Professor extends Pouvoir {
+	public Professor() {
+		name = "professor";
+		description = "class begin!";
+	}
+
+	public int bonusattack(Room r) {
+		int n = 0;
+		if (r.getRoomType() == RoomType.CLASSROOM)
+			n = 3;
+		if (r.getRoomType() == RoomType.TPROOM)
+			n = 2;
+		else if (r.getRoomType() == RoomType.TDROOM)
+			n = 2;
 		return n;
-			
-}
-public   int bonusdefense(RoomType r)
-{		
+
+	}
+
+	public int bonusdefense(Room r) {
 		int n;
-		if(r==RoomType.COMPUTERROOM)
-		n=2;
-		else n=1;
+		if (r.getRoomType() == RoomType.COMPUTERROOM)
+			n = 2;
+		else
+			n = 1;
 		return n;
-}
-public   int peoplecarry(RoomType r)
-{
-	    int n;
-		if(r==RoomType.COMPUTERROOM)
-	    n=4;
-		else n=2;
+	}
+
+	public int peoplecarry(Room r) {
+		int n;
+		if (r.getRoomType() == RoomType.COMPUTERROOM)
+			n = 4;
+		else
+			n = 2;
 		return n;
-}
-public int gainbonus(RoomType r)             //si ce pion reste dans ce room,chaque tour il va gagner des bonus 
-{
-	    int n = 0;
-    	if(r==RoomType.CLASSROOM)
-    	n=30;
-    		
-    	if(r==RoomType.TPROOM)
-    	n=20;
-    	else if(r==RoomType.TDROOM)
-    	n=20;
+	}
+
+	public int gainbonus(Room r) // si ce pion reste dans ce room,chaque tour il
+									// va gagner des bonus
+	{
+		int n = 0;
+		if (r.getRoomType() == RoomType.CLASSROOM)
+			n = 3;
+
+		if (r.getRoomType() == RoomType.TPROOM)
+			n = 2;
+		else if (r.getRoomType() == RoomType.TDROOM)
+			n = 2;
 		return n;
-}
+	}
 }

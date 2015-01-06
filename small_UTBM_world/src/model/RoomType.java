@@ -11,7 +11,7 @@ public enum RoomType{
 	, CHINESECLASS("CHINESE")
 	, MECANICCLASS("MECANIC")
 	, GRASS("GRASS")
-	, CLEARING("CLEARING")
+	, MESS("MESS")
 	;
 	
 	String label;

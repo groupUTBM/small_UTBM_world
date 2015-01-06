@@ -1,43 +1,43 @@
 package pouvoir;
 
+import model.Room;
 import model.RoomType;
 
 public class Drunkard extends Pouvoir {
-public Drunkard()                                   //constructeur
-{
-		this.setname("drunkard");
-	    this.setdescription("beer,one more beer!");
-}
-public int bonusattack(RoomType r)               //si le roomtype est BAR,il a un avantage
-{
-	    int n;
-	    if(r==RoomType.BAR)
-	    n=3;
-	    else n=1;
-	    return n;
-}
-public   int bonusdefense(RoomType r)           //si le roomtype est BAR,il a un avantage
-{
-	    int n;
-		if(r==RoomType.BAR)
-			n=2;
-		else n=1;
+	public Drunkard() // constructeur
+	{
+		name = "drunkard";
+		description = "beer,one more beer!";
+	}
+
+	public int bonusattack(Room r) // si le roomtype est BAR,il a un avantage
+	{
+		int n;
+		if (r.getRoomType() == RoomType.BAR)
+			n = 3;
+		else
+			n = 1;
 		return n;
-}
-public   int peoplecarry(RoomType r)            //les peuple maximale dans ce room
-{
-	    int n;
-		if(r==RoomType.BAR )
-			n=3;
-		else n=2;
+	}
+
+	public int bonusdefense(Room r) // si le roomtype est BAR,il a un avantage
+	{
+		int n;
+		if (r.getRoomType() == RoomType.BAR)
+			n = 2;
+		else
+			n = 1;
 		return n;
-}
-public int gainbonus(RoomType r)                //si ce pion reste dans ce room,chaque tour il va gagner des bonus 
-{
-		int n=0;
-		if(r==RoomType.BAR)
-		n=30;
-		else n=20;
+	}
+
+	public int gainbonus(Room r) // si ce pion reste dans ce room,chaque tour il
+									// va gagner des bonus
+	{
+		int n = 0;
+		if (r.getRoomType() == RoomType.BAR)
+			n = 3;
+		else
+			n = 2;
 		return n;
-}
+	}
 }

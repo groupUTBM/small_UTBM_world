@@ -99,11 +99,11 @@ public class Player  {
 			   }
 			   else if(r.getOwner() != this){
 				   int nbNeeded = 2+r.getNbUnits()
-						   +r.getOwner().getPouvoir().bonusdefense(r.getRoomType())
-						   -pouv.bonusattack(r.getRoomType())
+						   +r.getOwner().getPouvoir().bonusdefense(r)
+						   -pouv.bonusattack(r)
 						   -dep.attack(nbPawnsInHand, r.getRoomType());//rajouter le calcul du bonus ici
-				   if(nbNeeded < 0){
-					   nbNeeded=0;
+				   if(nbNeeded < 1){
+					   nbNeeded=1;
 				   }
 				   if(nbPawnsInHand >= nbNeeded){
 					   r.returnPawns();
@@ -113,6 +113,7 @@ public class Player  {
 					   }
 					   nbPawnsInHand-=nbNeeded;
 				   }
+				   
 			   }
 		   nbRooms=rooms.size();
 	   }
@@ -150,7 +151,7 @@ public class Player  {
    public int computePoints(){
 	   int points=0;
 	   for(int i=0;i<nbRooms;i++){
-		   points+=1+pouv.gainbonus(rooms.get(i).getRoomType());
+		   points+=1+pouv.gainbonus(rooms.get(i));
 	   }
 	   return points;
    }
@@ -162,7 +163,6 @@ public class Player  {
    }
    //Fonctions  d'usage interne
    private boolean canConquer(Room r){
-	   System.out.println("can has?");
 	   boolean conquerable = false;
 	   nbRooms = rooms.size();
 	   i=0;

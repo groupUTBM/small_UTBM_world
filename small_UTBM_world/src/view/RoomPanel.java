@@ -92,6 +92,7 @@ public class RoomPanel extends JPanel {
 
 		
 		type = r.getRoomType().getLabel();
+		System.out.println("on change la couleur stp");
 		//associe ? chaque type de salle une couleur
 		switch(r.getRoomType()){
 		case BAR :
