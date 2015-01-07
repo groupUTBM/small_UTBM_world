@@ -64,9 +64,9 @@ public class RoomPanel extends JPanel {
 	public void paintComponent(Graphics g){
 		//comme on veut garder l'affichage des fonds
 		super.paintComponent(g);
-		//affichage du nombre d'unit?
+		//affichage du nombre d'unité
 		g.setColor(new Color(255-(int)(color.getRed()*0.8), 255-(int)(color.getGreen()*0.8), 255-(int)(color.getBlue()*0.8)));
-		g.drawString(Integer.toString(nbUnits)+" "+posX+" "+posY, 0, 10);
+		g.drawString(Integer.toString(nbUnits), 0, 10);
 		//affichage du type de salle
 		g.setFont(new Font("Dialog",0,9));
 		g.drawString(type, 0, 50);
@@ -133,8 +133,5 @@ public class RoomPanel extends JPanel {
 		
 		setBackground(color);
 		repaint();
-	}
-	public String toString(){
-		return "rp";
 	}
 }

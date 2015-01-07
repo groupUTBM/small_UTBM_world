@@ -23,7 +23,8 @@ public class PlayerListPanel extends JPanel {
 			add(playerPnls.get(i));
 		}
 		//GUI
-		this.setMinimumSize(new Dimension(200,500));
+		this.setMinimumSize(new Dimension(200,400));
+		this.setMaximumSize(new Dimension(200,400));
 		this.setBackground(Color.white);
 		this.setLayout(new GridLayout(6, 1, 5, 5));
 	}

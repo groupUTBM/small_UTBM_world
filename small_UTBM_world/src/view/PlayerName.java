@@ -2,6 +2,7 @@ package view;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -44,7 +45,6 @@ public class PlayerName extends JPanel{
 	    ecranNom.setHorizontalAlignment(JTextField.CENTER);
 	    ecranPeuple.setHorizontalAlignment(JTextField.CENTER);
 	    
-
 		
 	    panNom.setHorizontalAlignment(JLabel.CENTER);
 	    panPeuple.setHorizontalAlignment(JLabel.CENTER);
@@ -63,7 +63,8 @@ public class PlayerName extends JPanel{
 	    this.add(ecranNom);
 	    this.add(panPeuple);
 	    this.add(ecranPeuple);
-
+	    this.setMinimumSize(new Dimension(300,40));
+	    this.setMaximumSize(new Dimension(300,50));
 	}
 	
 	public void update(Player p){

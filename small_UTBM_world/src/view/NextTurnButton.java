@@ -35,7 +35,5 @@ public class NextTurnButton extends JButton{
 	public void showRedeployment(){
 		setText("red?ploiement");
 	}
-	public String toString(){
-		return "ntb";
-	}
+	
 }

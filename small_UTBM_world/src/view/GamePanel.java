@@ -65,13 +65,14 @@ public class GamePanel extends JPanel {
 	//Fonctions ? usage interne
 	private void instantiations(ArrayList<Player> players){
 		mec = new MouseEffectComponent();
-		gpl = new GamePanelListener(mec);
+		
 		mapPnl = new MapPanel();
 		
 		gbc = new GridBagConstraints();
 		gbl = new GridBagLayout();
 		cl = new CardLayout();
 		gc = new GameController(new Game(this,players));
+		gpl = new GamePanelListener(mec, gc);
 		tk = getToolkit();
 		
 		mapPnl.addRoomListeners(gc);

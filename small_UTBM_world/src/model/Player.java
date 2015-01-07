@@ -17,10 +17,11 @@ public class Player  {
    private Department dep;
    private Pouvoir pouv;
    private ArrayList<Room> rooms;
+   private ArrayList<Room> declinedRooms;
    private int nbRooms;
+   private int nbDeclinedRooms;
    private ArrayList<Pawn> pawnsInHand;
    private int nbPawnsInHand;
-   private int i;
    private int victoryPt;
    private MouseEffectComponent mec;
    private Color color;
@@ -32,8 +33,11 @@ public class Player  {
 	   name=s;
 	   dep=new Utseus();
 	   rooms= new ArrayList<Room>();
+	   nbRooms=0;
+	   declinedRooms=new ArrayList<Room>();
+	   nbDeclinedRooms=0;
 	   pawnsInHand = new ArrayList<Pawn>();
-	   for(i=0;i<nbPawnsInHand;i++){
+	   for(int i=0;i<nbPawnsInHand;i++){
 		   pawnsInHand.add(new Pawn(null,this));
 	   }
 	   color =  new Color(0,0,0);
@@ -44,7 +48,23 @@ public class Player  {
    }
    
    public void declin(){
+	   //au cas où l'utilisateur ait déjà un peuple en déclin, on vide ces salles
 	   
+	   for(int i = 0;i<nbDeclinedRooms;i++){
+		   for(int j=0;j<declinedRooms.get(i).getNbUnits();j++){
+			   declinedRooms.get(i).pullTopPawn();
+		   }
+	   }
+	   int temp = nbRooms-1;
+	   for(int i=0;i<=temp;i++){
+		   declinedRooms.add(rooms.remove(temp-i));
+		   declinedRooms.get(i).setOwner(NullPlayerSingleton.getInstance().getNullPlayer());
+		   for(int j = 0;j<declinedRooms.get(i).getNbUnits()-1;j++){
+			   declinedRooms.get(i).pullTopPawn();
+		   }
+	   }
+	   nbRooms=rooms.size();
+	   nbDeclinedRooms=declinedRooms.size();
    }
    public void becomeOwner(Room r){
 	   r.setOwner(this);
@@ -55,7 +75,7 @@ public class Player  {
 	   
 	   if(rooms.remove(r)){
 		   NullPlayerSingleton.getInstance().getNullPlayer().becomeOwner(r);
-		   nbRooms=rooms.size();
+		   nbRooms--;
 	   }
    }
    public void takePawn(Room r){
@@ -101,7 +121,7 @@ public class Player  {
 			   }
 			   else if(r.getOwner() != this){
 				   int nbNeeded = 2+r.getNbUnits()
-						   +r.getOwner().getPouvoir().bonusdefense(r)
+						   +r.getTopPawn().getPouvoir().bonusdefense(r)
 						   -pouv.bonusattack(r)
 						   -dep.attack(nbPawnsInHand, r.getRoomType());//rajouter le calcul du bonus ici
 				   if(nbNeeded < 1){
@@ -109,7 +129,7 @@ public class Player  {
 				   }
 				   if(nbPawnsInHand >= nbNeeded){
 					   r.returnPawns();
-					   for(i=0 ; i<nbNeeded;i++){
+					   for(int i=0 ; i<nbNeeded;i++){
 						   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
 						   pawnsInHand.remove(pawnsInHand.size()-1);
 					   }
@@ -121,7 +141,7 @@ public class Player  {
 					   randomInt = rand.nextInt(5);
 					   if(nbPawnsInHand + randomInt >= nbNeeded){
 						   r.returnPawns();
-						   for(i=0;i<nbPawnsInHand;i++){
+						   for(int i=0;i<nbPawnsInHand;i++){
 							   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
 							   pawnsInHand.remove(pawnsInHand.size()-1);
 						   }
@@ -147,7 +167,7 @@ public class Player  {
 	   if(dep!=null){
 		   dep=d;
 		   nbPawnsInHand=dep.get_numunite();
-		   for(i=0;i<nbPawnsInHand;i++){
+		   for(int i=0;i<nbPawnsInHand;i++){
 			   pawnsInHand.add(new Pawn(null,this));
 		   }
 	   }
@@ -177,6 +197,10 @@ public class Player  {
 	   for(int i=0;i<nbRooms;i++){
 		   points+=1+pouv.gainbonus(rooms.get(i));
 	   }
+	   nbDeclinedRooms=declinedRooms.size();
+	   for(int i=0;i<nbDeclinedRooms;i++){
+		   points++;
+	   }
 	   return points;
    }
    public void setColor(Color c){
@@ -189,7 +213,7 @@ public class Player  {
    private boolean canConquer(Room r){
 	   boolean conquerable = false;
 	   nbRooms = rooms.size();
-	   i=0;
+	   int i=0;
 	   while(i < nbRooms && rooms.get(i) != r){
 		  System.out.println(rooms.get(i).getPosX()+" "+rooms.get(i).getPosY());
 		   if(r.isAdjacent(rooms.get(i))){

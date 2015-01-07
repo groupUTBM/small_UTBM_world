@@ -26,7 +26,7 @@ public class PlayerNameLst extends JPanel {
 			add(playerNames.get(i));
 		}
 		//GUI
-		this.setMinimumSize(new Dimension(200,500));
+		setPreferredSize(new Dimension(300,450));
 		this.setBackground(Color.BLACK);
 		this.setLayout(new GridLayout(6, 1, 1, 1));
 	}

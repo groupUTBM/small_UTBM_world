@@ -22,7 +22,6 @@ public class ChooseBouttonListener implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		c.choiceMade(cp);
-		System.out.println("oskdoasd");
 	}
 
 	@Override
