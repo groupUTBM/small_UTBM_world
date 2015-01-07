@@ -179,7 +179,11 @@ public class Combination extends JPanel{
 		System.out.println("ok");
 		nbCurrPlayer++;
 		if(nbCurrPlayer == players.size()){
-			gp.showGamePan();
+			if(players.size()==1)
+				gp.showGamePanAgain();
+			else
+				gp.showGamePan();
+			
 		}
 	}
 	

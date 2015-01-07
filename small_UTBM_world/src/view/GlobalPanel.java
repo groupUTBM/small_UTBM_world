@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import model.Player;
+
 public class GlobalPanel extends JPanel {
 	
 	private static final long serialVersionUID = -6726502932861804628L;
@@ -16,6 +18,7 @@ public class GlobalPanel extends JPanel {
 	private ChooseNbPlayer cnbPan;
 	private EnterNamePlayer enpPan;
 	private Combination combPan;
+	private static GlobalPanel gpInstance;
 	
 	
 	private CardLayout cl;
@@ -26,7 +29,7 @@ public class GlobalPanel extends JPanel {
 		cl = new CardLayout();
 		welcomePan=new WelcomePanel(this);
 		enpPan = new EnterNamePlayer(this);
-		
+		gpInstance=this;
 		
 		//GUI
 		setLayout(cl);
@@ -61,6 +64,10 @@ public class GlobalPanel extends JPanel {
 		add(gamePan,"gamePan");
 		cl.show(this, "gamePan");
 	}
+	public void showGamePanAgain(){
+		cl.show(this, "gamePan");
+		gamePan.getGameController().getGame().nextTurn();
+	}
 	public void showChooseNbPan(){
 		cnbPan = new ChooseNbPlayer(this);
 		add(cnbPan,"chooseNbPan");
@@ -75,16 +82,20 @@ public class GlobalPanel extends JPanel {
 		add(combPan,"combinationPan");
 		cl.show(this,"combinationPan");
 	}
+	public void showCombPanDecline(Player p){
+		ArrayList<Player> player = new ArrayList<Player>();
+		player.add(p);
+		combPan = new Combination(this, player);
+		add(combPan,"combinationPan");
+		cl.show(this, "combinationPan");
+	}
 
 	public void showWelcomePan() {
 		// TODO Auto-generated method stub
 		cl.show(this,"welcomePan");
 	}
+	public static GlobalPanel getInstance(){
+		return gpInstance;
+	}
 	
-	
-
-	
-
-
-
 }

@@ -54,7 +54,6 @@ public class GameController {
 	}
 	public void middleButtonClick(){
 		game.getCurrentPlayer().declin();
-		game.nextTurn();
 	}
 	public Game getGame(){
 		return game;

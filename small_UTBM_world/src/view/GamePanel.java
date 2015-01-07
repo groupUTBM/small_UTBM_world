@@ -112,7 +112,9 @@ public class GamePanel extends JPanel {
 		mec.setVisible(true);
 		containerPan.setVisible(true);
 	}
-	
+	public GameController getGameController(){
+		return gc;
+	}
 	
 
 }
