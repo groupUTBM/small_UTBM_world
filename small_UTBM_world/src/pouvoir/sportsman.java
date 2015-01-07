@@ -28,7 +28,7 @@ public class Sportsman extends Pouvoir {
 	}
 
 	public int gainbonus(Room r) // si ce pion reste dans ce room,chaque
-										// tour il va gagner des bonus
+									// tour il va gagner des bonus
 	{
 		int n = 0;
 		if (r.getRoomType() == RoomType.GYM)

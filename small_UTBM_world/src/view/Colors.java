@@ -2,7 +2,7 @@ package view;
 
 import java.awt.Color;
 
-public final class Colors {
+public final class Colors {//used like a static class
 	
 	public static Color getTdRoomColor() {
 		return tdRoomColor;
@@ -85,7 +85,7 @@ public final class Colors {
 	private static Color dormColor = new Color(205,201,201);
 	private static Color computerColor = new Color(151,255,255);
 	private static Color grassColor = new Color(202,255,112);
-	private static Color messColor = new Color(139,37,0);
+	private static Color messColor = new Color(150,50,0);
 	
 	private Colors(){
 	

@@ -121,9 +121,9 @@ public class Combination extends JPanel{
 		combPanels = new ArrayList<CombPanel>();
 		choosePan.setPreferredSize(new Dimension(400,800));
 		scroll.setPreferredSize(new Dimension(400,500));
-//		choosePan.add(scroll);
+		Random rand = new Random();
 		for(int i=0;i<8;i++){
-			Random rand = new Random();
+			
 			int numPeu = rand.nextInt(5);
 			int numPou = rand.nextInt(5); 
 			CombPanel cpl = new CombPanel(peuples.get(numPeu),pouvoirs.get(numPou));
@@ -173,7 +173,10 @@ public class Combination extends JPanel{
 	public void choiceMade(CombPanel cp){
 		players.get(nbCurrPlayer).setdepartment(cp.getDep());
 		players.get(nbCurrPlayer).setPouvoir(cp.getPou());
+		combPanels.remove(cp);
+		choosePan.remove(cp);
 		playerNameLstPnl.getPlayerName(nbCurrPlayer).update(players.get(nbCurrPlayer));
+		
 		nbCurrPlayer++;
 		if(nbCurrPlayer == players.size()){
 			gp.showGamePan();

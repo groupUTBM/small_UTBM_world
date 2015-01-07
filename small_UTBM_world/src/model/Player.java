@@ -1,6 +1,7 @@
 package model;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 import pouvoir.Pouvoir;
 import pouvoir.Drunkard;
@@ -8,6 +9,7 @@ import view.MouseEffectComponent;
 import department.Department;
 import department.TC;
 import department.Utseus;
+import divers.ConquestFailed;
 
 
 public class Player  {
@@ -86,7 +88,7 @@ public class Player  {
 //	   }
 	   
    }
-   public void conquerRoom(Room r){
+   public void conquerRoom(Room r) throws ConquestFailed{
 	   if(canConquer(r)){
 		   if(r.getNbUnits() == 0){
 			   if(nbPawnsInHand >= 2){
@@ -113,6 +115,22 @@ public class Player  {
 					   }
 					   nbPawnsInHand-=nbNeeded;
 				   }
+				   else if(nbPawnsInHand >= 1){//lancer de dé nécessaire
+					   int randomInt;
+					   Random rand = new Random();
+					   randomInt = rand.nextInt(5);
+					   if(nbPawnsInHand + randomInt >= nbNeeded){
+						   r.returnPawns();
+						   for(i=0;i<nbPawnsInHand;i++){
+							   r.addPawn(pawnsInHand.get(pawnsInHand.size()-1));
+							   pawnsInHand.remove(pawnsInHand.size()-1);
+						   }
+						   nbPawnsInHand=0;
+					   }
+					   else{
+						   throw new ConquestFailed(this, r);
+					   }
+				   }
 				   
 			   }
 		   nbRooms=rooms.size();
@@ -126,8 +144,14 @@ public class Player  {
 	   mec.setColor(color);
    }
    public void setdepartment(Department d){
-	   if(dep!=null)
-		  dep=d;
+	   if(dep!=null){
+		   dep=d;
+		   nbPawnsInHand=dep.get_numunite();
+		   for(i=0;i<nbPawnsInHand;i++){
+			   pawnsInHand.add(new Pawn(null,this));
+		   }
+	   }
+
    }
    public Department getDepartment(){
 	   return dep;

@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Graphics;
 
+import divers.ConquestFailed;
 import view.GamePanel;
 import model.Game;
 import model.Map;
@@ -26,7 +27,14 @@ public class GameController {
 	}
 	public void rightClickOnRoom(Room r){
 		if(game.conquestPhase()){
-			game.getCurrentPlayer().conquerRoom(r);
+			try{
+				game.getCurrentPlayer().conquerRoom(r);
+			} catch(ConquestFailed e){
+				game.startRedeployment();
+				System.out.println("le joueur "+e.getPlayer().getName()
+						+ " a raté son lancer de dés");
+			}
+			
 		}
 		else
 		{

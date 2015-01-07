@@ -1,6 +1,6 @@
 package model;
 
-public enum RoomType{
+public enum RoomType {
 	TPROOM("TP")
 	, TDROOM("TD")
 	, COMPUTERROOM("CR")
@@ -15,12 +15,13 @@ public enum RoomType{
 	;
 	
 	String label;
-	
+
 	private RoomType(String lbl) {
-		label=lbl;
+		label = lbl;
 	}
-	public String getLabel(){
+
+	public String getLabel() {
 		return label;
 	}
-	
+
 }

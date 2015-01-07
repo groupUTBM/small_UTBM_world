@@ -7,6 +7,7 @@ public class TC extends Department {
 	public TC() {
 		name="Tronc Commun";
 		description="I'm new here";
+		nbPawn=15;
 	}
 
 	public int attack(int numunite, RoomType r) {

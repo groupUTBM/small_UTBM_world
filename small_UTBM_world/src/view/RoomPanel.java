@@ -26,8 +26,8 @@ public class RoomPanel extends JPanel {
 	public RoomPanel(int pX, int pY){
 		//instanciation :
 		nbUnits=0;
-		color = new Color(0,0,0);
-		pawnColor =  new Color(0,0,0);
+		color = Color.BLACK;
+		pawnColor =  Color.BLACK;
 		posX = pX;
 		posY = pY;
 		//GUI :
@@ -75,6 +75,7 @@ public class RoomPanel extends JPanel {
 		g.setColor(pawnColor);
 		int size = 2+(int)(10*Math.log((double)nbUnits));
 		g.fillOval(getWidth()/2-size/2, getHeight()/2-size/2, size,size);
+		//affichage d'un rectangle de la couleur du joueur actuel si le curseur est sur la salle
 		if(selected){
 			
 			g.setColor(rpl.getGC().getGame().getCurrentPlayer().getColor());
@@ -115,6 +116,7 @@ public class RoomPanel extends JPanel {
 			break;
 		case MESS :
 			color = Colors.getMessColor();
+			break;
 		case GYM : 
 			color = Colors.getGymColor();
 			break;

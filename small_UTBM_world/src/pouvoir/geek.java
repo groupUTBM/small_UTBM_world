@@ -5,8 +5,8 @@ import model.RoomType;
 
 public class Geek extends Pouvoir {
 	public Geek() {
-		name="geek";
-		description="we are crzay in computer";
+		name = "geek";
+		description = "we are crzay in computer";
 	}
 
 	public int bonusattack(Room r) // si le roomtype est COMPUTERROOM,il a un

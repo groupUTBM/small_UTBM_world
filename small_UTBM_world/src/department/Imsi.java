@@ -8,6 +8,7 @@ public class Imsi extends Department {
 	public Imsi() {
 		name="ingénierie et management des systèmes industriels";
 		description="Come here,and i will lead you to do your job";
+		nbPawn=10;
 	}
 
 	public String get_description() {

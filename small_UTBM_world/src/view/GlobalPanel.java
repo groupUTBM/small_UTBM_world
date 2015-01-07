@@ -68,6 +68,7 @@ public class GlobalPanel extends JPanel {
 	}
 	public void showEnterNamePan(){		
 		cl.show(this, "enterNamePan");
+		enpPan.init();
 	}
 	public void showCombinationPan() {
 		combPan = new Combination(this,enpPan.getListPlayers());

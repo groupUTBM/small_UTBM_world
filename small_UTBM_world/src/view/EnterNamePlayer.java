@@ -42,9 +42,7 @@ public class EnterNamePlayer extends JPanel {
 		configurationGUI();
 	}
 	// fonction permettant de r?initialiser quand on clique sur "Retour"
-	public void init(int nb){
-		nbPlayers = nb;
-		System.out.println(nb);
+	public void init(){
 		listPlayersName = "<html>";
 		affiche.setText("");
 		enter.setText("");

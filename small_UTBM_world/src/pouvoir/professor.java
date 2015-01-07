@@ -30,15 +30,6 @@ public class Professor extends Pouvoir {
 		return n;
 	}
 
-	public int peoplecarry(Room r) {
-		int n;
-		if (r.getRoomType() == RoomType.COMPUTERROOM)
-			n = 4;
-		else
-			n = 2;
-		return n;
-	}
-
 	public int gainbonus(Room r) // si ce pion reste dans ce room,chaque tour il
 									// va gagner des bonus
 	{

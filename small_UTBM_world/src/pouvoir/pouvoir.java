@@ -3,7 +3,6 @@ package pouvoir;
 import model.Room;
 
 public abstract class Pouvoir {
-	protected int nbStartUnits;
 	protected String name;
 	protected String description;
 
@@ -21,9 +20,6 @@ public abstract class Pouvoir {
 		return this.description;
 	}
 
-	public int getNbStartUnits() {
-		return nbStartUnits;
-	}
 }
 
 
