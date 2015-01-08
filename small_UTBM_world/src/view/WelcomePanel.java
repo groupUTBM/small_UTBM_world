@@ -37,7 +37,7 @@ public class WelcomePanel extends JPanel {
 	}
 	private void configurationGUI(){
 		setLayout(new FlowLayout(FlowLayout.CENTER,600,70));
-		title.setText("BIENVENUE A SMALL UTBM WORLD!");
+		title.setText("BIENVENUE DANS SMALL UTBM WORLD!");
 		title.setForeground(Color.white);
 		title.setFont(new java.awt.Font("Dialog", 1, 20));
 		title.getText();

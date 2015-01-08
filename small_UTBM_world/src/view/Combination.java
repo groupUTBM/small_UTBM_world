@@ -80,7 +80,7 @@ public class Combination extends JPanel{
 	
 		
 		setLayout(new FlowLayout(FlowLayout.CENTER,600,30));
-		title.setText("CHOISIR VOTRES PEUPLES ET POUVOIRS!");
+		title.setText("CHOISISSEZ VOS PEUPLES ET POUVOIRS!");
 		title.setForeground(Color.white);
 		title.setFont(new java.awt.Font("Dialog", 1, 20));
 		title.getText();
