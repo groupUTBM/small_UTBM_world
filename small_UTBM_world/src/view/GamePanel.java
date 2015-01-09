@@ -8,11 +8,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import model.Game;
@@ -72,7 +69,7 @@ public class GamePanel extends JPanel {
 		gbl = new GridBagLayout();
 		cl = new CardLayout();
 		gc = new GameController(new Game(this,players));
-		gpl = new GamePanelListener(mec, gc);
+		gpl = new GamePanelListener(mec);
 		tk = getToolkit();
 		
 		mapPnl.addRoomListeners(gc);

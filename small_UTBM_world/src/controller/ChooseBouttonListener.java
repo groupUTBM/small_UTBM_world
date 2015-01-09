@@ -2,11 +2,9 @@ package controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import view.CombPanel;
 import view.Combination;
-import model.Player;
 
 public class ChooseBouttonListener implements MouseListener{
 	private Combination c;

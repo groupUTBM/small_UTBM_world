@@ -2,7 +2,6 @@ package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -19,7 +18,7 @@ public class GlobalPanel extends JPanel {
 	private EnterNamePlayer enpPan;
 	private Combination combPan;
 	private static GlobalPanel gpInstance;
-	
+	private VictoryPanel vp;
 	
 	private CardLayout cl;
 	
@@ -93,6 +92,11 @@ public class GlobalPanel extends JPanel {
 	public void showWelcomePan() {
 		// TODO Auto-generated method stub
 		cl.show(this,"welcomePan");
+	}
+	public void showVictoryPan(Player p){
+		vp= new VictoryPanel(p);
+		add(vp,"vp");
+		cl.show(this, "vp");
 	}
 	public static GlobalPanel getInstance(){
 		return gpInstance;

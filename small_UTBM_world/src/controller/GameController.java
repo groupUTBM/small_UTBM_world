@@ -1,11 +1,8 @@
 package controller;
 
-import java.awt.Graphics;
 
 import divers.ConquestFailed;
-import view.GamePanel;
 import model.Game;
-import model.Map;
 import model.Room;
 
 public class GameController {

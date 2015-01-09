@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import view.GamePanel;
+import view.GlobalPanel;
 
 public class Game {
 	private Map map;
@@ -50,21 +51,30 @@ public class Game {
 	
 	public void nextTurn(){
 		currentPlayer.setVictoryPt(currentPlayer.getVictoryPt()+currentPlayer.computePoints());
-		if(nbCurrPlayer < nbPlayers-1){
-			currentPlayer=players.get(nbCurrPlayer+1);
-			nbCurrPlayer++;
+		nbTurn++;
+		if(nbTurn==2){
+			
+			GlobalPanel.getInstance().showVictoryPan(currentPlayer);
+			
 		}
 		else
 		{
-			currentPlayer=players.get(0);
-			nbCurrPlayer=0;
+			if (nbCurrPlayer < nbPlayers - 1) {
+				currentPlayer = players.get(nbCurrPlayer + 1);
+				nbCurrPlayer++;
+			} else {
+				currentPlayer = players.get(0);
+				nbCurrPlayer = 0;
+			}
+			conquest=true;
+			currentPlayer.setMec(gamePan.getMec());
+			gamePan.getNextTurnButton().showRedeployment();
+			gamePan.getPlayerListPanel().update(players);
+			System.out.println("new turn : "+currentPlayer.getName());
 		}
-		nbTurn++;
-		conquest=true;
-		currentPlayer.setMec(gamePan.getMec());
-		gamePan.getNextTurnButton().showRedeployment();
-		gamePan.getPlayerListPanel().update(players);
-		System.out.println("new turn : "+currentPlayer.getName());
+		
+		
+		
 	}
 	public void startRedeployment (){
 		conquest=false;

@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;

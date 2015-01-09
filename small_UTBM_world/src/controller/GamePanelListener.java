@@ -1,22 +1,17 @@
 package controller;
 
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import view.GamePanel;
 import view.MouseEffectComponent;
-import view.RoomPanel;
 
 
 
 public class GamePanelListener implements MouseMotionListener, MouseListener {
 	private MouseEffectComponent mec;
-	private GameController gc;
-	public GamePanelListener(MouseEffectComponent mec, GameController g) {
+	public GamePanelListener(MouseEffectComponent mec) {
 		this.mec=mec;
-		gc=g;
 	}
 	@Override
 	public void mouseDragged(MouseEvent arg0) {

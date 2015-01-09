@@ -15,7 +15,6 @@ import javax.swing.JTextField;
 import model.Player;
 import controller.BackButtonListener;
 import controller.CombinationButtonListener;
-import controller.StartButtonListener;
 /*Panel permettant ? l'utilisateur d'ajouter des joueurs tout en 
 indiquant leur nom.*/
 public class EnterNamePlayer extends JPanel {

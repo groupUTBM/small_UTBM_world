@@ -2,27 +2,18 @@ package view;
 
 import javax.swing.JPanel;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 //import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 
 import pouvoir.Drunkard;
 import pouvoir.Geek;
@@ -34,9 +25,7 @@ import pouvoir.Sportsman;
 import pouvoir.Traveller;
 import model.Player;
 import controller.ChooseBouttonListener;
-import controller.CombinationButtonListener;
 import controller.GameButtonListener;
-import controller.StartButtonListener;
 import department.Department;
 import department.Edim;
 import department.Ee;
@@ -50,13 +39,12 @@ public class Combination extends JPanel{
 	
 	private static final long serialVersionUID = -8696350219613029425L;
 	private JLabel title = new JLabel();
-	private JLabel c1;
 	private JButton start = new JButton();
 	private JPanel container = new JPanel();
 	private JPanel choosePan = new JPanel();
 	private JPanel playerPan = new JPanel();
 	private PlayerNameLst playerNameLstPnl;
-	private ArrayList<PlayerName> playerNames = new ArrayList<PlayerName>();
+	
 	private ArrayList<ChooseBouttonListener> cbls = new ArrayList<ChooseBouttonListener>();
 	private JScrollPane scroll = new JScrollPane(choosePan);
 	private int nbCurrPlayer = 0;
@@ -113,6 +101,7 @@ public class Combination extends JPanel{
 		pouvoirs.add(sleepyhead);
 		pouvoirs.add(sportsman);
 		pouvoirs.add(traveller);
+		pouvoirs.add(drunkard);
 		
 		playerPan.add(playerNameLstPnl);
 		playerPan.setBackground(Color.BLACK);
@@ -124,8 +113,8 @@ public class Combination extends JPanel{
 		Random rand = new Random();
 		for(int i=0;i<6;i++){
 			
-			int numPeu = rand.nextInt(5);
-			int numPou = rand.nextInt(5); 
+			int numPeu = rand.nextInt(peuples.size());
+			int numPou = rand.nextInt(pouvoirs.size()); 
 			CombPanel cpl = new CombPanel(peuples.get(numPeu),pouvoirs.get(numPou));
 			cbls.add(new ChooseBouttonListener(this,cpl));
 			cpl.addMouseListener(cbls.get(i));

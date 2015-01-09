@@ -2,9 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -17,6 +15,7 @@ import department.Department;
 
 public class CombPanel extends JPanel{
 	
+	private static final long serialVersionUID = -38334570374311529L;
 	private JLabel panDep;
 	private JLabel panDepDes;
 	private JLabel panPou;
