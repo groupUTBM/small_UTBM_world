@@ -5,7 +5,7 @@ import model.Room;
 
 public class TC extends Department {
 	public TC() {
-		name="Tronc Commun";
+		name="TC";
 		description="I'm new here";
 		nbPawn=15;
 	}

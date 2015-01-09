@@ -68,6 +68,6 @@ public class PlayerName extends JPanel{
 	}
 	
 	public void update(Player p){
-		ecranPeuple.setText(p.getDepartment().get_name());
+		ecranPeuple.setText(p.getDepartment().get_name() + " + " + p.getPouvoir().getname());
 	}
 }

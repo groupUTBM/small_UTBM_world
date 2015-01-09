@@ -5,7 +5,7 @@ import model.Room;
 
 public class Utseus extends Department {
 	public Utseus() {
-		name="Université de Technologie Sino-Européenne de l'Université de Shanghai";
+		name="UTSEUS";
 		description="Engineer?No problem.Speak chinese,english,french?No problem.";
 		nbPawn=12;
 	}

@@ -6,7 +6,7 @@ import model.Room;
 public class Imsi extends Department {
 
 	public Imsi() {
-		name="ingénierie et management des systèmes industriels";
+		name="IMSI";
 		description="Come here,and i will lead you to do your job";
 		nbPawn=10;
 	}

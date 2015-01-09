@@ -6,7 +6,7 @@ import model.Room;
 public class Ee extends Department {
 
 	public Ee() {
-		name="ENERGY AND ENVIRONEMENT";
+		name="EE";
 		description = "Hello young man,you should protect our environement...";
 		nbPawn=10;
 	}

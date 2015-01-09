@@ -5,7 +5,7 @@ import model.Room;
 
 public class Info extends Department {
 	public Info() {
-		name="Genie Informatique";
+		name="GI";
 		description="We are geek,we are strong in computer science!if the room is computer classroom,you will be stronger";
 		nbPawn = 13;
 	}

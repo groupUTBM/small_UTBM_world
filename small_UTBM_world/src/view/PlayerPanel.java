@@ -28,7 +28,7 @@ public class PlayerPanel extends JPanel
 		
 		Font police = new Font("Arial", Font.BOLD, 12);
 		ecranNom = new JLabel(p.getName());
-	    ecranPeuple = new JLabel(p.getDepartment().get_name());
+	    ecranPeuple = new JLabel(p.getDepartment().get_name() + " + " + p.getPouvoir().getname());
 	    ecranPoint = new JLabel(Integer.toString(p.getVictoryPt()));
 	    panNom = new JLabel("NOM :");
 		panPeuple = new JLabel("Peuple + Pouvoir");
@@ -71,6 +71,6 @@ public class PlayerPanel extends JPanel
 	}
 	public void update(Player p){
 		ecranPoint.setText(Integer.toString(p.getVictoryPt()));
-		ecranPeuple.setText(p.getDepartment().get_name());
+		ecranPeuple.setText(p.getDepartment().get_name() + " + " + p.getPouvoir().getname());
 	}
 }
