@@ -258,5 +258,11 @@ public class Player {
 		} else
 			return false;
 	}
+	public int getNbRooms(){
+		return nbRooms;
+	}
+	public int getNbDeclinedRooms(){
+		return nbDeclinedRooms;
+	}
 
 }

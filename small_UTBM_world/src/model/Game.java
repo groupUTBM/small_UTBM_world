@@ -52,10 +52,26 @@ public class Game {
 	public void nextTurn(){
 		currentPlayer.setVictoryPt(currentPlayer.getVictoryPt()+currentPlayer.computePoints());
 		nbTurn++;
-		if(nbTurn==2){
-			
+		if(nbTurn==4){
+			Player winner = players.get(0);
 			GlobalPanel.getInstance().showVictoryPan(currentPlayer);
-			
+			for(int i=1;i<nbPlayers;i++){
+				if(winner.getVictoryPt()< players.get(i).getVictoryPt()){
+					winner= players.get(i);
+				}
+				else if(winner.getVictoryPt()==players.get(i).getVictoryPt()){
+					if(winner.getNbRooms()<players.get(i).getNbRooms()){
+						winner=players.get(i);
+					}
+						
+					else if(winner.getNbRooms()==players.get(i).getNbRooms()){
+						if(winner.getNbDeclinedRooms()<=players.get(i).getNbDeclinedRooms()){
+							winner=players.get(i);
+						}
+					}
+				}
+			}
+			GlobalPanel.getInstance().showVictoryPan(winner);
 		}
 		else
 		{
@@ -95,4 +111,5 @@ public class Game {
 	public GamePanel getGamePanel(){
 		return gamePan;
 	}
+	
 }

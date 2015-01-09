@@ -1,13 +1,8 @@
 package small_UTBM_world;
 
-import java.awt.GridBagLayout;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import view.GlobalPanel;
-import model.Game;
 
 public class Main { 
 	public static void main(String args[]){

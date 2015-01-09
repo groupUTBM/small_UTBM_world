@@ -1,7 +1,6 @@
 package pouvoir;
 
 import model.Room;
-import model.RoomType;
 
 public class Traveller extends Pouvoir {
 	public Traveller() {
