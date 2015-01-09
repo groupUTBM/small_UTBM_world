@@ -3,11 +3,15 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 //import javax.swing.SwingConstants;
+
+
 
 
 import controller.StartButtonListener;
@@ -18,22 +22,24 @@ public class WelcomePanel extends JPanel {
 	private JLabel title;
 	private JButton commencer;
 	private JButton tutoriel;
-	
+	private GlobalPanel gp;
 	private StartButtonListener sbl;
 	
-	public WelcomePanel(GlobalPanel gp){
+	public WelcomePanel(GlobalPanel gPan){
 		
-		instantiations(gp);
+		instantiations(gPan);
 		configurationGUI();
 	   
 	}
 	
 	//Fonctions ? usage interne
-	private void instantiations(GlobalPanel gp){
+	private void instantiations(GlobalPanel gPan){
+		gp=gPan;
 		title = new JLabel();
 		commencer = new JButton("Commencer");
 		tutoriel = new JButton("Tutoriel");
 		sbl= new StartButtonListener(gp);
+		
 	}
 	private void configurationGUI(){
 		setLayout(new FlowLayout(FlowLayout.CENTER,600,70));
@@ -54,6 +60,14 @@ public class WelcomePanel extends JPanel {
 		add(commencer);
 	   
 		commencer.addMouseListener(sbl);
+		tutoriel.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				gp.showTutorielPan();
+				
+			}
+			
+		});
+
 	   
 		setVisible(true);
 	   

@@ -19,7 +19,7 @@ public class Main {
 		
 		frame.setLocationRelativeTo(null);
 		frame.setContentPane(globalPnl);
-		frame.setResizable(true);
+		frame.setResizable(false);
 		
 		
 //		globalPnl.add(gamePnl);

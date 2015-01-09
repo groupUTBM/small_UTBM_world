@@ -19,6 +19,7 @@ public class GlobalPanel extends JPanel {
 	private Combination combPan;
 	private static GlobalPanel gpInstance;
 	private VictoryPanel vp;
+	private Tutoriel tp;
 	
 	private CardLayout cl;
 	
@@ -27,6 +28,7 @@ public class GlobalPanel extends JPanel {
 		testPan = new JPanel();
 		cl = new CardLayout();
 		welcomePan=new WelcomePanel(this);
+		tp = new Tutoriel(this);
 		enpPan = new EnterNamePlayer(this);
 		gpInstance=this;
 		
@@ -36,6 +38,7 @@ public class GlobalPanel extends JPanel {
 		add(testPan, "testpanel");
 		add(welcomePan, "welcomePan");
 		add(enpPan,"enterNamePan");
+		add(tp,"tutorielPan");
 		
 		
 		
@@ -97,6 +100,9 @@ public class GlobalPanel extends JPanel {
 		vp= new VictoryPanel(p);
 		add(vp,"vp");
 		cl.show(this, "vp");
+	}
+	public void showTutorielPan(){
+		cl.show(this,"tutorielPan");
 	}
 	public static GlobalPanel getInstance(){
 		return gpInstance;

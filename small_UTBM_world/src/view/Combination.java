@@ -5,15 +5,12 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-//import javax.swing.SwingConstants;
 
 import pouvoir.Drunkard;
 import pouvoir.Geek;
@@ -25,7 +22,6 @@ import pouvoir.Sportsman;
 import pouvoir.Traveller;
 import model.Player;
 import controller.ChooseBouttonListener;
-import controller.GameButtonListener;
 import department.Department;
 import department.Edim;
 import department.Ee;
@@ -39,7 +35,6 @@ public class Combination extends JPanel{
 	
 	private static final long serialVersionUID = -8696350219613029425L;
 	private JLabel title = new JLabel();
-	private JButton start = new JButton();
 	private JPanel container = new JPanel();
 	private JPanel choosePan = new JPanel();
 	private JPanel playerPan = new JPanel();
@@ -54,16 +49,13 @@ public class Combination extends JPanel{
 	private ArrayList<Player> players;
 	private ArrayList<CombPanel> combPanels;
 	private GlobalPanel gp;
-	private GameButtonListener gbl;
-	private GridBagConstraints gbc;
+
 
 	
 	public Combination(GlobalPanel globalPan,ArrayList<Player> p){
 		gp = globalPan;
 		players = p;
 		title = new JLabel();
-		start = new JButton("Commencer");
-		gbl = new GameButtonListener(gp);
 		playerNameLstPnl = new PlayerNameLst(players);
 	
 		
@@ -108,8 +100,12 @@ public class Combination extends JPanel{
 		
 		
 		combPanels = new ArrayList<CombPanel>();
+		choosePan.setOpaque(true);
+		choosePan.setBackground(Color.black);
 		choosePan.setPreferredSize(new Dimension(400,800));
 		scroll.setPreferredSize(new Dimension(400,450));
+		scroll.setOpaque(true);
+		scroll.setBackground(Color.BLACK);
 		Random rand = new Random();
 		for(int i=0;i<6;i++){
 			
@@ -123,39 +119,15 @@ public class Combination extends JPanel{
 			choosePan.add(combPanels.get(i));
 			
 		}
-		
-		
-		
-		
-		
+			
 		setBackground(Color.black);
 		add(title);
-		
-		gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.BOTH;
-		gbc.weightx = 0;
-		gbc.gridx=0;
-		gbc.gridheight=2;
-		container.add(scroll,gbc);
-		gbc.gridheight  = 1;
-		gbc.gridx=GridBagConstraints.RELATIVE;
-//		container.add(jpRadioButtons,gbc);
-		gbc.gridx = 1;
-		gbc.gridy = GridBagConstraints.RELATIVE;
-		container.add(playerPan,gbc);
-		
-		container.setBackground(Color.black);
-		
-		
-		
-//		add(playerPan);
+		container.add(scroll);
+		container.add(playerPan);		
+		container.setBackground(Color.black);		
 		add(container);
-//		add(jpRadioButtons);
-		add(start);
 		setVisible(true);
-		
-		start.addMouseListener(gbl);
-		start.setVisible(true);
+
 	}
 	
 	

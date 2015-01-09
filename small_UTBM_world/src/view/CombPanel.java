@@ -78,7 +78,7 @@ public class CombPanel extends JPanel{
 		ecranDep.setPreferredSize(new Dimension(200,35));
 		ecranDepDes.setPreferredSize(new Dimension(200,35));
 		ecranPou.setPreferredSize(new Dimension(200,35));
-		ecranPouDes.setPreferredSize(new Dimension(200,35));
+		ecranPouDes.setPreferredSize(new Dimension(200,50));
 		ecranDep.setOpaque(true);
 		ecranDepDes.setOpaque(true);
 		ecranPou.setOpaque(true);
@@ -93,6 +93,7 @@ public class CombPanel extends JPanel{
 		ecranPouDes.setForeground(Color.white);
 		
 		c1.setLayout(new GridLayout(4,1));
+		c1.setPreferredSize(new Dimension(80,120));
 		c1.add(panDep);
 		c1.add(panDepDes);
 		c1.add(panPou);
@@ -102,6 +103,7 @@ public class CombPanel extends JPanel{
 		c1.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		c2.setLayout(new GridLayout(4,1));
+		c2.setPreferredSize(new Dimension(200,120));
 		c2.add(ecranDep);
 		c2.add(ecranDepDes);
 		c2.add(ecranPou);
